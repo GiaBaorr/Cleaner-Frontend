@@ -37,6 +37,8 @@ export class HomeComponent {
     });
 
     myArr.forEach((element: Worker) => {
+      console.log(1);
+
       console.log(element.name + ': ' + element.email);
     });
   }
