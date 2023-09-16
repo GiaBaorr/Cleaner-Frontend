@@ -11,6 +11,6 @@ export class WorkerServiceService {
   constructor(private httpClient: HttpClient) {}
 
   getAllWorkers(): Observable<Worker[]> {
-    return this.httpClient.get<Worker[]>(this.baseUrl + '/workers');
+    return this.httpClient.get<Worker[]>(this.baseUrl);
   }
 }
