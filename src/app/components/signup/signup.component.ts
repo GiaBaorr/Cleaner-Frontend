@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 import { GlobalConstants } from 'src/app/global-constant';
 
 @Component({
@@ -15,21 +21,42 @@ export class SignupComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
-    this.signUpForm = this.formBuilder.group({
-      email: [
-        null,
-        [Validators.required, Validators.pattern(GlobalConstants.emailRegex)],
-      ],
-      password1: [
-        null,
-        [
-          Validators.required,
-          Validators.minLength(6),
-          Validators.maxLength(18),
+    this.signUpForm = this.formBuilder.group(
+      {
+        email: [
+          null,
+          [Validators.required, Validators.pattern(GlobalConstants.emailRegex)],
         ],
-      ],
-      password2: [null, [Validators.required]],
-    });
+        password1: [
+          null,
+          [
+            Validators.required,
+            Validators.minLength(6),
+            Validators.maxLength(18),
+          ],
+        ],
+        password2: [null, [Validators.required]],
+        fullName: [null, [Validators.required]],
+      },
+      {
+        validator: this.ConfirmedValidator(),
+      }
+    );
+  }
+
+  ConfirmedValidator() {
+    return (formGroup: FormGroup) => {
+      const password1 = formGroup.controls['password1'];
+      const password2 = formGroup.controls['password2'];
+      if (password2.errors && !password2.errors?.['confirmedValidator']) {
+        return;
+      }
+      if (password1.value !== password2.value) {
+        password2.setErrors({ confirmedValidator: true });
+      } else {
+        password2.setErrors(null);
+      }
+    };
   }
 
   validateSubmit() {

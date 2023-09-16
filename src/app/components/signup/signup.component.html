@@ -1,6 +1,6 @@
 <mat-toolbar>
   <mat-toolbar-row fxLayout="row">
-    <span>Signup</span>
+    <span>Becoming a SUPER CLEANER</span>
     <span class="spacer"></span>
     <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
       <mat-icon>close</mat-icon>
@@ -25,6 +25,24 @@
             >This field is mandatory</span
           >
           <span *ngIf="signUpForm.controls.email.errors.pattern"
+            >This field is invalid</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <!-- fullName -->
+      <mat-form-field appearance="fill" fxFlex>
+        <mat-label>Full Name</mat-label>
+        <input matInput formControlName="fullName" required />
+        <mat-error
+          *ngIf="
+            signUpForm.controls.fullName.touched &&
+            signUpForm.controls.fullName.invalid
+          "
+        >
+          <span *ngIf="signUpForm.controls.fullName.errors.required"
+            >This field is mandatory</span
+          >
+          <span *ngIf="signUpForm.controls.fullName.errors.pattern"
             >This field is invalid</span
           >
         </mat-error>
@@ -102,6 +120,9 @@
             "
             >This field length must be between 6-18</span
           >
+          <span *ngIf="signUpForm.controls.password2.errors.confirmedValidator">
+            Passwords are not match.
+          </span>
         </mat-error>
       </mat-form-field>
     </div>
