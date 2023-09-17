@@ -36,7 +36,10 @@ export class SignupComponent implements OnInit {
           ],
         ],
         password2: [null, [Validators.required]],
-        fullName: [null, [Validators.required]],
+        fullName: [
+          null,
+          [Validators.required, Validators.pattern(GlobalConstants.nameRegex)],
+        ],
       },
       {
         validator: this.ConfirmedValidator(),
