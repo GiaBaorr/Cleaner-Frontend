@@ -55,6 +55,14 @@ export class SignupComponent implements OnInit {
           null,
           [Validators.required, Validators.pattern(GlobalConstants.nameRegex)],
         ],
+        phoneNumber: [
+          null,
+          [
+            Validators.required,
+            Validators.pattern(GlobalConstants.contactNumberRegex),
+          ],
+        ],
+        address: [null, [Validators.required]],
         chores: this.formBuilder.array([]),
       },
       {
