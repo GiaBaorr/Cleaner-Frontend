@@ -23,6 +23,13 @@ import { WorkerListComponent } from './components/worker-list/worker-list.compon
     HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent,
+              HomeComponent,
+              LoginComponent,
+              SignupComponent,
+              HeaderComponent,
+              FooterComponent,
+              WorkerListComponent
+  ],
 })
 export class AppModule {}
