@@ -12,9 +12,18 @@ import { SignupComponent } from './components/signup/signup.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { WorkerListComponent } from './components/worker-list/worker-list.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, LoginComponent, SignupComponent, HeaderComponent, FooterComponent, WorkerListComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    HomeComponent,
+    LoginComponent,
+    SignupComponent,
+    WorkerListComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -23,13 +32,12 @@ import { WorkerListComponent } from './components/worker-list/worker-list.compon
     HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent,
-              HomeComponent,
-              LoginComponent,
-              SignupComponent,
-              HeaderComponent,
-              FooterComponent,
-              WorkerListComponent
+  bootstrap: [
+    AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    WorkerListComponent,
+    HomeComponent,
   ],
 })
 export class AppModule {}
