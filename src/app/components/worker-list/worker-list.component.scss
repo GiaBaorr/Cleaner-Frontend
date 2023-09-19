@@ -115,6 +115,18 @@ h2 {
   font-size: 15px;
 }
 
+.card-btn {
+  font-size: 15px;
+}
 .card-btn:hover {
   opacity: 0.8;
+}
+
+.chores-list {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 0 0 5px 0;
 }
