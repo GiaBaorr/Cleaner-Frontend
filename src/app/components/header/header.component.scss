@@ -1,98 +1,64 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
+@import url("https://fonts.googleapis.com/css2?family=Croissant+One&display=swap");
 
-
-container-flud{
-   margin-bottom: 20px;
-}
 /* Áp dụng CSS cho các liên kết có lớp .home-link */
-.navbar {
-    background-color: #ffffff; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-    padding: 10px 0;
-   
+.header {
+  height: 15%;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.navbar-toggler {
-    border: none; 
+.header-element {
+  height: 100%;
 }
 
-.nav-link {
-    font-size: 18px; 
-    color: #333;
-    font-size: 25px;
+.header-slogan {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.slogan {
+  font-family: "Croissant One";
+  font-size: 25px;
+  color: rgb(76, 195, 217);
 }
 
-.nav-link:hover {
-    color: rgb(59, 129, 221); 
+.header-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.navbar-brand img {
-    max-width: 100%; 
-    height: auto; 
-    margin: 20px 40px;
-    margin-left: 60px;
-    margin-right: auto;
-    margin-top: 5px;
-    /* Thay đổi chiều rộng */
+.header-brand {
+  height: 100%;
+}
+.header-brand img {
+  height: 100%;
 }
 
-/* Chọn theo phần tử con */
-.navbar-nav .login-button {
-    margin: 0 10px;
+.header-button {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.navbar-nav .signup-button {
-    margin: 0 20px;
+.header-button button {
+  width: 40%;
+  height: 30%;
+
+  background-color: rgb(76, 195, 217);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-
-
-.login-button,
-.signup-button {
-    background-color: rgb(76,195,217);
-    color: white;
-    padding: 10px 100px;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    font-weight: bold;
-    margin-left: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-    width: 150px;
-    text-align: center;
+.header-button button:hover {
+  background-color: rgb(59, 129, 221);
+  /* Màu nền khi hover */
+  color: #fff;
+  /* Màu chữ khi hover */
 }
-
-.login-button:hover,
-.signup-button:hover {
-    background-color: rgb(59, 129, 221);
-    /* Màu nền khi hover */
-    color: #fff;
-    /* Màu chữ khi hover */
-}
-
-.navbar-nav .nav-item.active {
-    text-align: center; 
-    flex: 1; 
-    
-}
-.navbar-nav .login-button,
-.navbar-nav .signup-button {
-    margin-left: auto; 
-}
-
-@media (max-width: 1280px) {
-    .navbar-toggler-icon {
-        color: #007bff; 
-    }
-}
-
-.navbar{
-    background-color: rgb(211,229,241) !important;
-}
-
-

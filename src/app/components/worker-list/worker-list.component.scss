@@ -1,124 +1,120 @@
-
-.row{
-    margin-top: 20px;
-}
 .stylish-input-group {
-    border: 1px solid #ccc;
-    border-radius: 25px;
-    padding: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
 }
 
 .stylish-input-group:hover {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .stylish-input-group input[type="text"] {
-    border: none;
-    outline: none;
-    box-shadow: none;
-    padding: 0;
-    margin: 0;
-    width: 75%;
-    line-height: 32px;
-    font-size: 18px;
-    border-radius: 25px;
-    
+  border: none;
+  outline: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  width: 75%;
+  line-height: 32px;
+  font-size: 18px;
+  border-radius: 25px;
+  padding-left: 12px;
 }
 .stylish-input-group input[type="text"]:focus {
-    color: #000; 
-    padding-inline-start: 12px;
-    position: relative;
-    cursor: text;
-    ::placeholder {
-        color: transparent; 
-    }
-    
+  color: #000;
+  padding-inline-start: 12px;
+  position: relative;
+  cursor: text;
+  ::placeholder {
+    color: transparent;
+  }
 }
 
-// .stylish-input-group input:focus{
-//     :placeholder-shown{
-//         display: block;
-//     }
-// }
-
 .stylish-input-group span.input-group-addon {
-    background: transparent;
-    border: none;
-    padding: 0;
-    margin: 0;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
 }
 
 .stylish-input-group span.input-group-addon button {
-    background: rgb(76,195,217);
-    border: none;
-    border-radius: 0 25px 25px 0;
-    color: #fff;
-    padding: 8px 15px;
-    cursor: pointer;
-    transition: background 0.3s ease;
+  background: rgb(76, 195, 217);
+  border: none;
+  border-radius: 0 25px 25px 0;
+  color: #fff;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 .stylish-input-group span.input-group-addon button:hover {
-    background: rgb(59, 129, 221);
+  background: rgb(59, 129, 221);
 }
 .form-group {
-    margin-top: 50px;
-    text-align: center;
-    background-color: linear-gradient(rgb(212,232,241),rgb(187,220,230),rgb(135,160,214));
-
+  margin-top: 50px;
+  text-align: center;
+  background-color: linear-gradient(
+    rgb(212, 232, 241),
+    rgb(187, 220, 230),
+    rgb(135, 160, 214)
+  );
 }
 
-
 .form-group {
-    margin-top: 250px;
+  margin-top: 250px;
 }
 
 .form-group input {
-    margin-top: 30px;
-    width: 300px;
-    height: 35px;
-    border: 1.5px solid grey;
-    border-radius: 5px;
+  margin-top: 30px;
+  width: 300px;
+  height: 35px;
+  border: 1.5px solid grey;
+  border-radius: 5px;
 }
 
 .form-group input::placeholder {
-    padding-left: 20px; 
-    
+  padding-left: 20px;
 }
-
 
 input[type="text"]:focus::placeholder {
-    color: transparent;
+  color: transparent;
 }
 .card {
-    text-align: center;
-    border-radius: 10px;
-    background-size: cover;
-    height: 500px;
-    width: 350px;
+  text-align: center;
+  border-radius: 10px;
+  background-size: cover;
+  height: 500px;
+  width: 350px;
 }
 
 .card img {
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    height: 350px;
-
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  height: 350px;
 }
 
 .card .btn {
-    background: rgb(76,195,217);
-    border-radius: 10px;
-    border: none;
+  background: rgb(76, 195, 217);
+  border-radius: 10px;
+  border: none;
 }
 
 h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 24px;
-    color: rgb(76,195,217); 
-    text-transform: uppercase; 
-    font-weight: bold; 
-    letter-spacing: 2px; 
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 24px;
+  color: rgb(76, 195, 217);
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.card-title {
+  font-size: 15px;
+}
+
+.card-btn:hover {
+  opacity: 0.8;
 }
