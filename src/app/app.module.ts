@@ -13,6 +13,16 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { WorkerListComponent } from './components/worker-list/worker-list.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { RouterModule, Routes } from '@angular/router';
+import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
+import { WorkerDetailComponent } from './components/worker-detail/worker-detail.component';
+
+const routes: Routes = [
+  { path: 'workers/:id', component: WorkerDetailComponent },
+  { path: 'workers', component: WorkerListComponent },
+  { path: '', redirectTo: '/workers', pathMatch: 'full' },
+  { path: '**', component: NotFoundPageComponent },
+];
 
 @NgModule({
   declarations: [
@@ -23,6 +33,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     LoginComponent,
     SignupComponent,
     WorkerListComponent,
+    NotFoundPageComponent,
+    WorkerDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,14 +42,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     MaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
+    RouterModule.forRoot(routes),
   ],
   providers: [],
-  bootstrap: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    WorkerListComponent,
-    HomeComponent,
-  ],
+  bootstrap: [AppComponent, HeaderComponent, FooterComponent, HomeComponent],
 })
 export class AppModule {}
