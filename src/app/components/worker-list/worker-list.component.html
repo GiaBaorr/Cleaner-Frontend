@@ -25,132 +25,20 @@
   </h2>
   <div class="row">
     <!-- Sản phẩm 1 -->
-    <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+    <div class="col-lg-4 col-md-4 col-sm-6 mb-4" *ngFor="let worker of workers">
       <div class="card">
-        <img
-          src="assets/placeholder.jpg"
-          class="card-img-top"
-          alt="Sản phẩm 1"
-        />
+        <img src="assets/placeholder.jpg" class="card-img-top" />
         <div class="card-body">
-          <h5 class="card-title">Quận Bình Tân</h5>
-          <p class="card-text">Experience: 3 years | $30/h</p>
-          <a href="#" class="card-btn btn btn-primary">Book now</a>
-        </div>
-      </div>
-    </div>
-    <!-- Sản phẩm 2 -->
-    <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
-      <div class="card">
-        <img
-          src="assets/placeholder.jpg"
-          class="card-img-top"
-          alt="Sản phẩm 2"
-        />
-        <div class="card-body">
-          <h5 class="card-title">Quận Bình Tân</h5>
-          <p class="card-text">Experience: 3 years | $30/h</p>
-          <a href="#" class="card-btn btn btn-primary">Book now</a>
-        </div>
-      </div>
-    </div>
-    <!-- Thêm sản phẩm khác tương tự ở đây -->
-    <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
-      <div class="card">
-        <img
-          src="assets/placeholder.jpg"
-          class="card-img-top"
-          alt="Sản phẩm 3"
-        />
-        <div class="card-body">
-          <h5 class="card-title">Quận Bình Tân</h5>
-          <p class="card-text">Experience: 3 years | $30/h</p>
-          <a href="#" class="card-btn btn btn-primary">Book now</a>
-        </div>
-      </div>
-    </div>
-    <!-- Tiếp tục thêm sản phẩm khác ở đây -->
-    <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
-      <div class="card">
-        <img
-          src="assets/placeholder.jpg"
-          class="card-img-top"
-          alt="Sản phẩm 3"
-        />
-        <div class="card-body">
-          <h5 class="card-title">Quận Bình Tân</h5>
-          <p class="card-text">Experience: 3 years | $30/h</p>
-          <a href="#" class="card-btn btn btn-primary">Book now</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
-      <div class="card">
-        <img
-          src="assets/placeholder.jpg"
-          class="card-img-top"
-          alt="Sản phẩm 3"
-        />
-        <div class="card-body">
-          <h5 class="card-title">Quận Bình Tân</h5>
-          <p class="card-text">Experience: 3 years | $30/h</p>
-          <a href="#" class="card-btn btn btn-primary">Book now</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
-      <div class="card">
-        <img
-          src="assets/placeholder.jpg"
-          class="card-img-top"
-          alt="Sản phẩm 3"
-        />
-        <div class="card-body">
-          <h5 class="card-title">Quận Bình Tân</h5>
-          <p class="card-text">Experience: 3 years | $30/h</p>
-          <a href="#" class="card-btn btn btn-primary">Book now</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
-      <div class="card">
-        <img
-          src="assets/placeholder.jpg"
-          class="card-img-top"
-          alt="Sản phẩm 3"
-        />
-        <div class="card-body">
-          <h5 class="card-title">Quận Bình Tân</h5>
-          <p class="card-text">Experience: 3 years | $30/h</p>
-          <a href="#" class="card-btn btn btn-primary">Book now</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
-      <div class="card">
-        <img
-          src="assets/placeholder.jpg"
-          class="card-img-top"
-          alt="Sản phẩm 3"
-        />
-        <div class="card-body">
-          <h5 class="card-title">Quận Bình Tân</h5>
-          <p class="card-text">Experience: 3 years | $30/h</p>
-          <a href="#" class="card-btn btn btn-primary">Book now</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
-      <div class="card">
-        <img
-          src="assets/placeholder.jpg"
-          class="card-img-top"
-          alt="Sản phẩm 3"
-        />
-        <div class="card-body">
-          <h5 class="card-title">Quận Bình Tân</h5>
-          <p class="card-text">Experience: 3 years | $30/h</p>
-          <a href="#" class="card-btn btn btn-primary">Book now</a>
+          <h5 class="card-title">{{ worker.name }}</h5>
+          <h5 class="card-title">Phường 16 Quận 8 Hồ Chí Minh</h5>
+          <ul class="chores-list">
+            <li class="card-text" *ngFor="let c of worker.chores">
+              {{ c.name }}
+            </li>
+          </ul>
+          <a href="#" class="card-btn btn btn-primary">
+            Book {{ worker.fee | currency : "VND" }}
+          </a>
         </div>
       </div>
     </div>

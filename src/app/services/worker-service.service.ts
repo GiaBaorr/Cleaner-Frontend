@@ -10,7 +10,14 @@ export class WorkerServiceService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getAllWorkers(): Observable<Worker[]> {
-    return this.httpClient.get<Worker[]>(this.baseUrl);
+  getAllWorkers(): Observable<WorkerList> {
+    return this.httpClient.get<WorkerList>(this.baseUrl);
   }
+}
+
+interface WorkerList {
+  accounts: Worker[];
+  currentPage: number;
+  pages: number;
+  elements: number;
 }
