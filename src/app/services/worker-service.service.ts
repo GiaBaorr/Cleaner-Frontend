@@ -13,11 +13,16 @@ export class WorkerServiceService {
   getAllWorkers(): Observable<WorkerList> {
     return this.httpClient.get<WorkerList>(this.baseUrl);
   }
+  getAllWorkersWithPagination(currentPage: number): Observable<WorkerList> {
+    return this.httpClient.get<WorkerList>(
+      this.baseUrl + '?page=' + currentPage
+    );
+  }
 }
 
 interface WorkerList {
   accounts: Worker[];
   currentPage: number;
-  pages: number;
-  elements: number;
+  pageSize: number;
+  totalElements: number;
 }

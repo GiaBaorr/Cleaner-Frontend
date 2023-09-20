@@ -12,7 +12,7 @@ export class WorkerListComponent implements OnInit {
   workers: Worker[] = [];
   searchMode: boolean = false; //to check if it search or list
   //pagination
-  currentPage: number = 0;
+  currentPage: number = 1;
   pageSize: number = 12;
   totalElements: number = 0;
 
@@ -39,11 +39,14 @@ export class WorkerListComponent implements OnInit {
   }
 
   handleListMode() {
-    this.workerService.getAllWorkers().subscribe((data: any) => {
-      this.workers = data.accounts;
-      this.currentPage = data.currentPage;
-      //thiếu --
-    });
+    // console.log('----LIST MODE---');
+    this.workerService
+      .getAllWorkersWithPagination(this.currentPage - 1)
+      .subscribe((data: any) => {
+        this.workers = data.accounts;
+        this.currentPage = data.currentPage + 1;
+        this.totalElements = +data.totalElements;
+      });
   }
 
   handleSearchMode() {

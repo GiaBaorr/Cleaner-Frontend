@@ -44,3 +44,18 @@
     </div>
   </div>
 </div>
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8" style="display: flex; justify-content: center">
+    <ngb-pagination
+      [(page)]="currentPage"
+      [pageSize]="pageSize"
+      [collectionSize]="totalElements"
+      (pageChange)="listWorkers()"
+      [maxSize]="4"
+      [boundaryLinks]="true"
+    >
+    </ngb-pagination>
+  </div>
+  <div class="col-md-2"></div>
+</div>
