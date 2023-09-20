@@ -1,6 +1,6 @@
 <mat-toolbar>
   <mat-toolbar-row fxLayout="row">
-    <span>Becoming a SUPER CLEANER</span>
+    <span>Sign up</span>
     <span class="spacer"></span>
     <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
       <mat-icon>close</mat-icon>
@@ -62,21 +62,6 @@
           >
           <span *ngIf="signUpForm.controls.phoneNumber.errors.pattern"
             >This field is invalid</span
-          >
-        </mat-error>
-      </mat-form-field>
-      <!-- Address -->
-      <mat-form-field appearance="fill" fxFlex>
-        <mat-label>Address</mat-label>
-        <input matInput formControlName="address" required />
-        <mat-error
-          *ngIf="
-            signUpForm.controls.address.touched &&
-            signUpForm.controls.address.invalid
-          "
-        >
-          <span *ngIf="signUpForm.controls.address.errors.required"
-            >This field is mandatory</span
           >
         </mat-error>
       </mat-form-field>
@@ -157,19 +142,6 @@
           </span>
         </mat-error>
       </mat-form-field>
-      <!-- Chores  -->
-      <div>
-        <mat-label style="padding: 5px">Your skill</mat-label><br />
-        <mat-checkbox
-          *ngFor="let chore of chores"
-          (change)="handleAddChore($event)"
-          value="{{ chore.id }}"
-          class="w-50"
-          matTooltip="{{ chore.description }}"
-          [matTooltipPosition]="'above'"
-          >{{ chore.name }}</mat-checkbox
-        >
-      </div>
     </div>
   </form>
 </mat-dialog-content>

@@ -22,19 +22,10 @@ export class SignupComponent implements OnInit {
   signUpForm: any = FormGroup;
   hide1: boolean = true;
   hide2: boolean = true;
-  chores: HouseholdChore[] = [];
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private householdChoresService: HouseholdChoresService
-  ) {}
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
-    //set up chores for rendering UI
-    this.householdChoresService
-      .getAllChores()
-      .subscribe((data) => (this.chores = data));
-
     //set up form
     this.signUpForm = this.formBuilder.group(
       {
@@ -62,8 +53,6 @@ export class SignupComponent implements OnInit {
             Validators.pattern(GlobalConstants.contactNumberRegex),
           ],
         ],
-        address: [null, [Validators.required]],
-        chores: this.formBuilder.array([]),
       },
       {
         validator: this.ConfirmedValidator(),
@@ -98,20 +87,4 @@ export class SignupComponent implements OnInit {
   }
 
   handleSubmitSignUp() {}
-
-  handleAddChore(event: MatCheckboxChange) {
-    let choresFormArray = this.signUpForm.controls['chores'] as FormArray;
-
-    if (event.checked === true) {
-      choresFormArray.push(new FormControl(event.source.value));
-    } else {
-      let i = 0;
-      choresFormArray.controls.forEach((chore) => {
-        if (chore.value === event.source.value) {
-          choresFormArray.removeAt(i);
-        }
-        i++;
-      });
-    }
-  }
 }
