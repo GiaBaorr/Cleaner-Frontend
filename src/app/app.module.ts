@@ -17,8 +17,23 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 import { WorkerDetailComponent } from './components/worker-detail/worker-detail.component';
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { RouteGuardService } from './services/route-guard.service';
 
 const routes: Routes = [
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [RouteGuardService],
+    data: { expectedRole: 'admin' },
+  },
+  {
+    path: 'user',
+    component: UserDetailComponent,
+    canActivate: [RouteGuardService],
+    data: { expectedRole: 'user' },
+  },
   { path: 'workers/:id', component: WorkerDetailComponent },
   { path: 'workers', component: WorkerListComponent },
   { path: '', redirectTo: '/workers', pathMatch: 'full' },
@@ -36,6 +51,8 @@ const routes: Routes = [
     WorkerListComponent,
     NotFoundPageComponent,
     WorkerDetailComponent,
+    UserDetailComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
