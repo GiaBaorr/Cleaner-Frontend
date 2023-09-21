@@ -1,0 +1,240 @@
+.container {
+    max-width: 80%;
+    margin: 10px auto;
+    /* Thay đổi để căn giữa theo chiều ngang */
+    padding: 10px;
+    /* Thêm padding để tạo khoảng cách */
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    text-decoration: none;
+    list-style: none;
+}
+
+/* ------------------------------- */
+.column1 {
+    text-align: center;
+    padding: 10px;
+    /* Thêm padding để tạo khoảng cách */
+    height: auto;
+    /* Thay đổi chiều cao thành tự động (auto) để phù hợp với nội dung */
+}
+
+.col-md-3.column1 * {
+    margin: 10px 0;
+    /* Sửa lại margin cho các phần tử con */
+}
+
+.column1 img {
+    margin-top: 10px;
+    max-height: 250px;
+    /* Thay đổi thành max-height để hình ảnh không tràn */
+    width: auto;
+    border-radius: 10px;
+    border: 1px solid #4CC3D9;
+}
+
+/* ------------------------------- */
+// ----------------------column2---------------
+.column2 {
+    margin: 10px auto;
+    /* Thay đổi margin để căn giữa theo chiều ngang */
+}
+
+.tieude {
+    margin-top: 20px;
+    margin-left: 30px;
+    display: flex;
+    /* Sử dụng flexbox để căn ngang các phần tử trong danh sách */
+    justify-content: space-between;
+}
+
+
+.column2 button {
+    /* CSS styles here */
+    margin-right: 70px;
+    padding: 5px 30px;
+    border-radius: 20px;
+    border: none;
+    background-color: #F1574A;
+    color: white;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.status {
+    display: flex;
+    /* Sử dụng flexbox để căn ngang các phần tử trong danh sách */
+    justify-content: space-around;
+    color: grey;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin: 0px 5px;
+
+}
+
+.status li p {
+    margin: 0 0;
+}
+
+.data {
+    display: flex;
+    /* Sử dụng flexbox để căn ngang các phần tử trong danh sách */
+    justify-content: space-around;
+    color: grey;
+
+    font-size: 14px;
+    color: red;
+
+}
+
+.ability {
+    display: flex;
+    flex-wrap: wrap;
+    /* Cho phép các phần tử tự động xuống hàng khi không đủ chỗ */
+    margin: 15px 15px;
+}
+
+.ability .ability-element {
+    text-shadow: 2px 0 0 #000;
+    margin: 0;
+    padding: 13px 16px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 13px;
+    background: rgba(0, 0, 0, .75);
+    border-radius: 10px;
+    text-transform: capitalize;
+    margin: 5px;
+
+}
+
+
+
+
+
+/* ------------------------------- */
+// -----------column3--------------------
+.column3 {
+    margin-top: 30px;
+    border-radius: 20px;
+}
+
+.thue-donate-chat {
+    height: 350px;
+    border: 1px solid #4CC3D9;
+    border-radius: 20px;
+    display: block;
+    margin-bottom: 10px;
+    /* Để tạo khoảng cách giữa các nút */
+
+}
+
+.thue-donate-chat h1 {
+    margin: 10px 10px;
+}
+
+.thue-donate-chat p {
+    padding: 0 10px;
+    letter-spacing: 1.5px;
+}
+
+.thue {
+    margin: 10px;
+    width: 280px;
+    height: 55px;
+    border-radius: 15px;
+    border: none;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+    background: #4CC3D9;
+    position: relative;
+    /* Thêm thuộc tính này để sử dụng :before */
+}
+
+.thue:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+    z-index: -1;
+}
+
+.thue:hover {
+    background-color: rgb(59, 129, 221);
+}
+
+
+
+.donate {
+    margin: 10px;
+    width: 280px;
+    height: 55px;
+    border-radius: 15px;
+    border: none;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+}
+
+.chat {
+    margin: 10px;
+    width: 280px;
+    height: 55px;
+    border-radius: 15px;
+    border: none;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+}
+
+// -----------------------------------------
+
+/* CSS cho phần bình luận */
+.comments {
+    width: 38%;
+    margin: 0 auto;
+}
+
+.comment {
+
+
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.username {
+    font-weight: bold;
+    color: #F1574A;
+    font-size: 16px;
+}
+
+.comment-date {
+    margin-left: auto;
+    font-size: 10px;
+}
+
+.comment-text {
+    margin-top: 5px;
+}
