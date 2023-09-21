@@ -7,14 +7,29 @@
   </div>
 
   <div class="col-md-4 header-element header-logo">
-    <a class="header-brand" href="#">
+    <a class="header-brand" routerLink="workers">
       <img src="assets/logo.png" />
     </a>
   </div>
 
   <div class="col-md-3 header-button header-element">
-    <button class="" href="#" (click)="onOpenLogin()">Login</button>
-    <button class="" href="#" (click)="onOpenSignUp()">Sign Up</button>
+    <button *ngIf="!isLoggedIn" (click)="onOpenLogin()">Login</button>
+    <button *ngIf="!isLoggedIn" (click)="onOpenSignUp()">Sign Up</button>
+    <!-- LOGGED IN -->
+    <button *ngIf="isLoggedIn && !isAdmin" (click)="onOpenProfile()">
+      Profile
+    </button>
+    <button *ngIf="isLoggedIn && isAdmin" (click)="onOpenProfile()">
+      Admin
+    </button>
+    <button
+      *ngIf="isLoggedIn"
+      (click)="onLogOut()"
+      style="background-color: #ccc"
+    >
+      Log out
+    </button>
+    <!-- END LOG IN -->
   </div>
   <div class="col-md-1"></div>
 </div>

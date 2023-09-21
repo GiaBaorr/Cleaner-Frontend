@@ -20,19 +20,20 @@ import { WorkerDetailComponent } from './components/worker-detail/worker-detail.
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { RouteGuardService } from './services/route-guard.service';
+import { ToastrModule } from 'ngx-toastr';
 
 const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
     canActivate: [RouteGuardService],
-    data: { expectedRole: 'admin' },
+    data: { expectedRole: ['admin'] },
   },
   {
     path: 'user',
     component: UserDetailComponent,
     canActivate: [RouteGuardService],
-    data: { expectedRole: 'user' },
+    data: { expectedRole: ['user', 'worker'] },
   },
   { path: 'workers/:id', component: WorkerDetailComponent },
   { path: 'workers', component: WorkerListComponent },
@@ -61,9 +62,11 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
+    ToastrModule.forRoot(),
     RouterModule.forRoot(routes),
   ],
   providers: [],
-  bootstrap: [AppComponent, HeaderComponent, FooterComponent, HomeComponent],
+  bootstrap: [AppComponent],
+  //HeaderComponent, FooterComponent, HomeComponent
 })
 export class AppModule {}

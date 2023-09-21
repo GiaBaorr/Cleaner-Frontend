@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { GlobalConstants } from 'src/app/global-constant';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +15,13 @@ export class LoginComponent implements OnInit {
   loginForm: any = FormGroup;
   hide: boolean = true;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private accountService: AccountService,
+    public dialogRef: MatDialogRef<LoginComponent>,
+    private router: Router,
+    private toast: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -29,5 +39,40 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  handleSubmitLogin() {}
+  handleSubmitLogin() {
+    var formData = this.loginForm.value;
+    var data = {
+      Email: formData.email,
+      Password: formData.password,
+    };
+
+    this.accountService.login(data).subscribe(
+      (res: any) => {
+        this.dialogRef.close();
+        localStorage.setItem('token', res.token);
+        this.router.navigate(['']);
+        this.toast.success('Hello, ' + res.name);
+        this.accountService.isLoggedIn.next(true);
+      },
+      (err: any) => {
+        if (err.status === 400) {
+          if (err.errors.Email) {
+            this.toast.warning(
+              'Please enter all required fields',
+              'Field Requirement'
+            );
+          }
+          if (err.errors.Password) {
+            this.toast.warning(
+              'Please enter all required fields',
+              'Field Requirement'
+            );
+          }
+        } else {
+          this.toast.warning('Your account is not exist', 'Invalid data');
+        }
+        this.accountService.isLoggedIn.next(false);
+      }
+    );
+  }
 }
