@@ -29,13 +29,11 @@
       <div class="card">
         <img src="assets/placeholder.jpg" class="card-img-top" />
         <div class="card-body">
-          <h5 class="card-title">{{ worker.name }}</h5>
-          <h5 class="card-title">Phường 16 Quận 8 Hồ Chí Minh</h5>
-          <ul class="chores-list">
-            <li class="card-text" *ngFor="let c of worker.chores">
-              {{ c.name }}
-            </li>
-          </ul>
+          <h5 class="card-title" style="font-weight: 500; font-size: 20px">
+            {{ worker.name }}
+          </h5>
+          <h5 class="card-title">{{ worker.address }}</h5>
+
           <a href="#" class="card-btn btn btn-primary">
             Book {{ worker.fee | currency : "VND" }}
           </a>

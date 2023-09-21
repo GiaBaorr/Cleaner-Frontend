@@ -29,17 +29,5 @@ export class HomeComponent {
     this.matDialog.open(SignupComponent, matConfig);
   }
 
-  testApi() {
-    let myArr: any = [];
-
-    this.workerService.getAllWorkers().subscribe((data) => {
-      myArr = data;
-    });
-
-    myArr.forEach((element: Worker) => {
-      console.log(1);
-
-      console.log(element.name + ': ' + element.email);
-    });
-  }
+  testApi() {}
 }

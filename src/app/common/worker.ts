@@ -4,7 +4,7 @@ export class Worker {
   public id?: number;
   public name?: string;
   public fee?: number;
-  public phone?: string;
-  public email?: string;
+  public address?: string;
+  public averageRate?: number;
   public chores?: HouseholdChore[];
 }
