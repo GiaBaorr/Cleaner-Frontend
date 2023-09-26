@@ -1,4 +1,4 @@
-<mat-toolbar>
+<mat-toolbar class="dialog-header">
   <mat-toolbar-row fxLayout="row">
     <span>Login</span>
     <span class="spacer"></span>
@@ -8,7 +8,7 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-dialog-content class="mat-typography">
+<mat-dialog-content class="mat-typography dialog-body">
   <form [formGroup]="loginForm">
     <div fxFlex fxLayout="column">
       <mat-form-field appearance="fill" fxFlex>
@@ -60,13 +60,14 @@
     </div>
   </form>
 </mat-dialog-content>
-<mat-dialog-actions align="end" class="pr-24">
+<mat-dialog-actions align="end" class="pr-24" class="dialog-footer">
   <button
     mat-raised-button
     color="primary"
     (click)="handleSubmitLogin()"
     type="submit"
     [disabled]="!(loginForm.valid && loginForm.dirty)"
+    class="login-button"
   >
     <mat-icon>login</mat-icon> Login
   </button>
