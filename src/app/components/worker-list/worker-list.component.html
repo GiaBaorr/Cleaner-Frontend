@@ -25,7 +25,11 @@
   </h2>
   <div class="row">
     <!-- Sản phẩm 1 -->
-    <div class="col-lg-4 col-md-4 col-sm-6 mb-4" *ngFor="let worker of workers">
+    <div
+      class="col-lg-4 col-md-4 col-sm-6 mb-4"
+      *ngFor="let worker of workers"
+      routerLink="/workers/{{ worker.id }}"
+    >
       <div class="card">
         <img src="assets/placeholder.jpg" class="card-img-top" />
         <div class="card-body">
@@ -34,12 +38,16 @@
           </h5>
           <h5 class="card-title">{{ worker.address }}</h5>
 
-          <a href="#" class="card-btn btn btn-primary">
+          <a
+            routerLink="/workers/{{ worker.id }}"
+            class="card-btn btn btn-primary"
+          >
             Book {{ worker.fee | currency : "VND" }}
           </a>
         </div>
       </div>
     </div>
+    <!-- END SAN PHAM -->
   </div>
 </div>
 <div class="row">

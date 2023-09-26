@@ -22,11 +22,13 @@ export class WorkerListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.route.queryParamMap.subscribe(() => this.listWorkers());
     this.listWorkers();
   }
 
   listWorkers() {
+    window.scrollTo(0, 0);
     this.route.queryParamMap.subscribe((param) => {
       this.searchMode = param.has('keyword');
     });

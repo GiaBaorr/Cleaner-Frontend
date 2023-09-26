@@ -63,7 +63,7 @@ const routes: Routes = [
     HttpClientModule,
     NgbModule,
     ToastrModule.forRoot(),
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'top' }),
   ],
   providers: [],
   bootstrap: [AppComponent],

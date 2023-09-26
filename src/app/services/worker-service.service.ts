@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { HouseholdChore } from '../common/household-chore';
+import { Worker } from '../common/worker';
 
 @Injectable({
   providedIn: 'root',
@@ -13,10 +15,15 @@ export class WorkerServiceService {
   getAllWorkers(): Observable<WorkerList> {
     return this.httpClient.get<WorkerList>(this.baseUrl);
   }
+
   getAllWorkersWithPagination(currentPage: number): Observable<WorkerList> {
     return this.httpClient.get<WorkerList>(
       this.baseUrl + '?page=' + currentPage
     );
+  }
+
+  getWorkerDetail(id: number): Observable<Worker> {
+    return this.httpClient.get<Worker>(this.baseUrl + '/' + id);
   }
 }
 
