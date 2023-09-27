@@ -10,6 +10,9 @@ import { WorkerServiceService } from 'src/app/services/worker-service.service';
 })
 export class WorkerDetailComponent implements OnInit {
   currentWorker?: Worker;
+  workerTag: string = '';
+  ratedStar: any[] = [];
+  leftOverStar: any[] = [];
 
   //tag : base on review and order history
 
@@ -23,7 +26,23 @@ export class WorkerDetailComponent implements OnInit {
 
     this.WorkerService.getWorkerDetail(id).subscribe((worker) => {
       this.currentWorker = worker;
-      console.log(worker);
+      this.assignWorkerTag(this.currentWorker.countOrder!);
+      this.createArrForStar(this.currentWorker.averageRate!);
     });
+  }
+
+  assignWorkerTag(countOrder: number): void {
+    if (countOrder! > 5) {
+      this.workerTag = 'Dedicated';
+    } else if (countOrder! > 15) {
+      this.workerTag = 'Hardworking';
+    } else {
+      this.workerTag = 'Talented';
+    }
+  }
+
+  createArrForStar(rate: number) {
+    this.ratedStar = new Array(rate);
+    this.leftOverStar = new Array(5 - rate);
   }
 }

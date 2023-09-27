@@ -25,7 +25,7 @@
         </li>
         <li>
           <button class="follow" style="cursor: default">
-            <i class="fa-regular fa-heart"></i> Most Diligent
+            <i class="fa-regular fa-heart"></i> {{ workerTag }}
             <!-- tags -->
           </button>
         </li>
@@ -39,7 +39,7 @@
         </li>
         <li>
           <p>Experience</p>
-          <p>10+</p>
+          <p>{{ currentWorker?.countOrder }}</p>
         </li>
         <li>
           <p>Response time</p>
@@ -69,10 +69,18 @@
       <!-- Cột bên phải -->
       <div class="thue-donate-chat">
         <h1>{{ currentWorker?.fee | currency : "VND" }} /h</h1>
-        <p>
+        <!-- <p>
           <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
           <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
           <i class="fa-solid fa-star"></i> 148 đánh giá
+        </p> -->
+        <p>
+          <i
+            class="fa-solid fa-star"
+            *ngFor="let r of ratedStar"
+            style="color: #f1574a"
+          ></i>
+          <i class="fa-regular fa-star" *ngFor="let r of leftOverStar"></i>
         </p>
         <div class="button-container">
           <button class="thue">Thuê</button>
@@ -92,22 +100,17 @@
 <div style="font-family: Poppins" class="comments">
   <hr style="margin: 0 20px" />
   <!-- ----------------------------------------- -->
-  <div class="comment">
+  <div class="comment" *ngFor="let c of currentWorker?.reviews">
     <div class="comment-header">
       <img src="assets/reviewer.jpg" alt="Avatar" class="avatar" />
-      <span class="username">John Doe</span>
-      <span class="comment-date">September 20, 2023</span>
+      <span class="username">{{ c.guestName }}</span>
+      <span class="comment-date">{{ c.date }}</span>
     </div>
-    <p class="comment-text">This is a great website! I love the content.</p>
+    <p class="comment-rate">
+      {{ c.rate }}
+      <i class="fa-solid fa-star fa-spin" style="color: #f1574a"></i>
+    </p>
+    <p class="comment-text">{{ c.content }}</p>
   </div>
   <!-- ----------------------------------------- -->
-  <div class="comment">
-    <div class="comment-header">
-      <img src="assets/reviewer.jpg" alt="Avatar" class="avatar" />
-      <span class="username">Jane Smith</span>
-      <span class="comment-date">September 21, 2023</span>
-    </div>
-    <p class="comment-text">I agree with John, this website is amazing!</p>
-  </div>
-  <!-- Thêm nhiều phần bình luận khác ở đây -->
 </div>

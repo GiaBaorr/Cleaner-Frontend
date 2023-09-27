@@ -1,0 +1,6 @@
+export class Review {
+  public guestName?: string;
+  public content?: string;
+  public rate?: number;
+  public date?: Date;
+}
