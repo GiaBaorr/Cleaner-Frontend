@@ -9,9 +9,14 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox';
+import { MatDialogRef } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { HouseholdChore } from 'src/app/common/household-chore';
 import { GlobalConstants } from 'src/app/global-constant';
+import { AccountService } from 'src/app/services/account.service';
 import { HouseholdChoresService } from 'src/app/services/household-chores.service';
+import { LoginComponent } from '../login/login.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -23,7 +28,13 @@ export class SignupComponent implements OnInit {
   hide1: boolean = true;
   hide2: boolean = true;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private accountService: AccountService,
+    private toast: ToastrService,
+    public dialogRef: MatDialogRef<SignupComponent>,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     //set up form
@@ -53,6 +64,7 @@ export class SignupComponent implements OnInit {
             Validators.pattern(GlobalConstants.contactNumberRegex),
           ],
         ],
+        address: [null, [Validators.required]],
       },
       {
         validator: this.ConfirmedValidator(),
@@ -80,11 +92,40 @@ export class SignupComponent implements OnInit {
       this.signUpForm.controls['password1'].value !=
       this.signUpForm.controls['password2'].value
     ) {
-      return true;
-    } else {
       return false;
     }
+    return true;
   }
 
-  handleSubmitSignUp() {}
+  handleSubmitSignUp() {
+    if (!this.validateSubmit()) {
+      this.toast.warning('Please enter a valid password');
+      return;
+    }
+
+    var formData = this.signUpForm.value;
+
+    var data = {
+      Name: formData.fullName,
+      Password: formData.password1,
+      Email: formData.email,
+      Phone: formData.phoneNumber,
+      Address: formData.address,
+    };
+
+    this.accountService.signup(data).subscribe(
+      (response: any) => {
+        localStorage.setItem('token', response.token);
+        this.router.navigate(['']);
+        this.toast.success('Hello, ' + response.name);
+        this.accountService.isLoggedIn.next(true);
+        this.dialogRef.close();
+      },
+      (error: any) => {
+        this.toast.error(error.error);
+        this.accountService.isLoggedIn.next(false);
+        localStorage.removeItem('token');
+      }
+    );
+  }
 }

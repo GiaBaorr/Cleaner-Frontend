@@ -16,4 +16,10 @@ export class AccountService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     });
   }
+
+  signup(data: any) {
+    return this.httpClient.post(this.baseUrl + '/register', data, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    });
+  }
 }
