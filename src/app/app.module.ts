@@ -21,6 +21,7 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
 import { AdminComponent } from './components/admin/admin.component';
 import { RouteGuardService } from './services/route-guard.service';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxUiLoaderConfig, NgxUiLoaderModule, SPINNER } from 'ngx-ui-loader';
 
 const routes: Routes = [
   {
@@ -40,6 +41,19 @@ const routes: Routes = [
   { path: '', redirectTo: '/workers', pathMatch: 'full' },
   { path: '**', component: NotFoundPageComponent },
 ];
+
+const ngx_ui_loader_config: NgxUiLoaderConfig = {
+  text: 'Loading...',
+  textColor: '#FFFFFF',
+  textPosition: 'center-center',
+  pbColor: '#4cc3d9',
+  bgsColor: '#4cc3d9',
+  fgsColor: '#4cc3d9',
+  fgsType: SPINNER.threeStrings,
+  fgsSize: 100,
+  hasProgressBar: false,
+  blur: 4,
+};
 
 @NgModule({
   declarations: [
@@ -62,6 +76,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
+    NgxUiLoaderModule.forRoot(ngx_ui_loader_config),
     ToastrModule.forRoot(),
     RouterModule.forRoot(routes, { scrollPositionRestoration: 'top' }),
   ],

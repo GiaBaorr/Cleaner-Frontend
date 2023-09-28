@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { GlobalConstants } from 'src/app/global-constant';
 import { AccountService } from 'src/app/services/account.service';
 
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
     private accountService: AccountService,
     public dialogRef: MatDialogRef<LoginComponent>,
     private router: Router,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private ngxService: NgxUiLoaderService
   ) {}
 
   ngOnInit(): void {
@@ -40,6 +42,8 @@ export class LoginComponent implements OnInit {
   }
 
   handleSubmitLogin() {
+    this.ngxService.start();
+
     var formData = this.loginForm.value;
     var data = {
       Email: formData.email,
@@ -48,6 +52,7 @@ export class LoginComponent implements OnInit {
 
     this.accountService.login(data).subscribe(
       (res: any) => {
+        this.ngxService.stop();
         this.dialogRef.close();
         localStorage.setItem('token', res.token);
         this.router.navigate(['']);
@@ -55,6 +60,7 @@ export class LoginComponent implements OnInit {
         this.accountService.isLoggedIn.next(true);
       },
       (err: any) => {
+        this.ngxService.stop();
         if (err.status === 400) {
           if (err.errors.Email) {
             this.toast.warning(

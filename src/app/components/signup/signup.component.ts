@@ -17,6 +17,7 @@ import { AccountService } from 'src/app/services/account.service';
 import { HouseholdChoresService } from 'src/app/services/household-chores.service';
 import { LoginComponent } from '../login/login.component';
 import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-signup',
@@ -33,7 +34,8 @@ export class SignupComponent implements OnInit {
     private accountService: AccountService,
     private toast: ToastrService,
     public dialogRef: MatDialogRef<SignupComponent>,
-    private router: Router
+    private router: Router,
+    private ngxService: NgxUiLoaderService
   ) {}
 
   ngOnInit(): void {
@@ -98,6 +100,8 @@ export class SignupComponent implements OnInit {
   }
 
   handleSubmitSignUp() {
+    this.ngxService.start();
+
     if (!this.validateSubmit()) {
       this.toast.warning('Please enter a valid password');
       return;
@@ -115,6 +119,8 @@ export class SignupComponent implements OnInit {
 
     this.accountService.signup(data).subscribe(
       (response: any) => {
+        this.ngxService.stop();
+
         localStorage.setItem('token', response.token);
         this.router.navigate(['']);
         this.toast.success('Hello, ' + response.name);
@@ -122,6 +128,8 @@ export class SignupComponent implements OnInit {
         this.dialogRef.close();
       },
       (error: any) => {
+        this.ngxService.stop();
+
         this.toast.error(error.error);
         this.accountService.isLoggedIn.next(false);
         localStorage.removeItem('token');

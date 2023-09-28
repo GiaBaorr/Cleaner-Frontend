@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { WorkerServiceService } from 'src/app/services/worker-service.service';
 import { Worker } from 'src/app/common/worker';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-worker-list',
@@ -18,7 +19,8 @@ export class WorkerListComponent implements OnInit {
 
   constructor(
     private workerService: WorkerServiceService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private ngxService: NgxUiLoaderService
   ) {}
 
   ngOnInit(): void {
@@ -42,9 +44,11 @@ export class WorkerListComponent implements OnInit {
 
   handleListMode() {
     // console.log('----LIST MODE---');
+    this.ngxService.start();
     this.workerService
       .getAllWorkersWithPagination(this.currentPage - 1)
       .subscribe((data: any) => {
+        this.ngxService.stop();
         this.workers = data.accounts;
         this.currentPage = data.currentPage + 1;
         this.totalElements = +data.totalElements;
