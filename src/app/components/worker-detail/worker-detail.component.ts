@@ -29,6 +29,12 @@ export class WorkerDetailComponent implements OnInit {
       this.assignWorkerTag(this.currentWorker.countOrder!);
       this.createArrForStar(this.currentWorker.averageRate!);
     });
+
+    let top = document.getElementById('top');
+    if (top !== null) {
+      top.scrollIntoView();
+      top = null;
+    }
   }
 
   assignWorkerTag(countOrder: number): void {

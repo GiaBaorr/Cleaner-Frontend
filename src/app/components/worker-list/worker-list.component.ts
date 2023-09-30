@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { WorkerServiceService } from 'src/app/services/worker-service.service';
 import { Worker } from 'src/app/common/worker';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
@@ -20,17 +20,17 @@ export class WorkerListComponent implements OnInit {
   constructor(
     private workerService: WorkerServiceService,
     private route: ActivatedRoute,
-    private ngxService: NgxUiLoaderService
+    private ngxService: NgxUiLoaderService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    window.scrollTo(0, 0);
     this.route.queryParamMap.subscribe(() => this.listWorkers());
     this.listWorkers();
+    window.scrollTo(0, 0);
   }
 
   listWorkers() {
-    window.scrollTo(0, 0);
     this.route.queryParamMap.subscribe((param) => {
       this.searchMode = param.has('keyword');
     });
@@ -40,10 +40,17 @@ export class WorkerListComponent implements OnInit {
     } else {
       this.handleListMode();
     }
+
+    let top = document.getElementById('top');
+    if (top !== null) {
+      top.scrollIntoView();
+      top = null;
+    }
   }
 
   handleListMode() {
     // console.log('----LIST MODE---');
+
     this.ngxService.start();
     this.workerService
       .getAllWorkersWithPagination(this.currentPage - 1)
@@ -58,5 +65,9 @@ export class WorkerListComponent implements OnInit {
   handleSearchMode() {
     let keyword: string = this.route.snapshot.queryParamMap.get('keyword')!;
     console.log('Search mode:' + keyword);
+  }
+
+  seeWorkerDetail(id: any) {
+    this.router.navigate(['/workers/' + id]);
   }
 }

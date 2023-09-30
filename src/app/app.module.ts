@@ -78,7 +78,7 @@ const ngx_ui_loader_config: NgxUiLoaderConfig = {
     NgbModule,
     NgxUiLoaderModule.forRoot(ngx_ui_loader_config),
     ToastrModule.forRoot(),
-    RouterModule.forRoot(routes, { scrollPositionRestoration: 'top' }),
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
   ],
   providers: [],
   bootstrap: [AppComponent],
