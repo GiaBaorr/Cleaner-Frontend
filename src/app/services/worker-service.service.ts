@@ -28,7 +28,7 @@ export class WorkerServiceService {
 }
 
 interface WorkerList {
-  accounts: Worker[];
+  workers: Worker[];
   currentPage: number;
   pageSize: number;
   totalElements: number;

@@ -22,6 +22,10 @@ import { AdminComponent } from './components/admin/admin.component';
 import { RouteGuardService } from './services/route-guard.service';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxUiLoaderConfig, NgxUiLoaderModule, SPINNER } from 'ngx-ui-loader';
+import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.component';
+import { AdminOrderComponent } from './components/admin-order/admin-order.component';
+import { AdminWorkerComponent } from './components/admin-worker/admin-worker.component';
+import { AdminAccountComponent } from './components/admin-account/admin-account.component';
 
 const routes: Routes = [
   {
@@ -29,6 +33,26 @@ const routes: Routes = [
     component: AdminComponent,
     canActivate: [RouteGuardService],
     data: { expectedRole: ['admin'] },
+    children: [
+      {
+        path: 'order',
+        component: AdminOrderComponent,
+        canActivate: [RouteGuardService],
+        data: { expectedRole: ['admin'] },
+      },
+      {
+        path: 'worker',
+        component: AdminWorkerComponent,
+        canActivate: [RouteGuardService],
+        data: { expectedRole: ['admin'] },
+      },
+      {
+        path: 'account',
+        component: AdminAccountComponent,
+        canActivate: [RouteGuardService],
+        data: { expectedRole: ['admin'] },
+      },
+    ],
   },
   {
     path: 'user',
@@ -68,6 +92,10 @@ const ngx_ui_loader_config: NgxUiLoaderConfig = {
     WorkerDetailComponent,
     UserDetailComponent,
     AdminComponent,
+    AdminNavbarComponent,
+    AdminOrderComponent,
+    AdminWorkerComponent,
+    AdminAccountComponent,
   ],
   imports: [
     BrowserModule,

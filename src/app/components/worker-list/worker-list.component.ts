@@ -56,7 +56,7 @@ export class WorkerListComponent implements OnInit {
       .getAllWorkersWithPagination(this.currentPage - 1)
       .subscribe((data: any) => {
         this.ngxService.stop();
-        this.workers = data.accounts;
+        this.workers = data.workers;
         this.currentPage = data.currentPage + 1;
         this.totalElements = +data.totalElements;
       });
