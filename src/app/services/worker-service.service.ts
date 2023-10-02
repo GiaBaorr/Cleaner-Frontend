@@ -22,6 +22,12 @@ export class WorkerServiceService {
     );
   }
 
+  getWorkerWithKeyword(keyword: string, page: number): Observable<WorkerList> {
+    return this.httpClient.get<WorkerList>(
+      this.baseUrl + '/search?keyword=' + keyword + '&page=' + page
+    );
+  }
+
   getWorkerDetail(id: number): Observable<Worker> {
     return this.httpClient.get<Worker>(this.baseUrl + '/' + id);
   }

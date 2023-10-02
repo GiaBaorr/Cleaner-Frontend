@@ -16,6 +16,8 @@ export class WorkerListComponent implements OnInit {
   currentPage: number = 1;
   pageSize: number = 12;
   totalElements: number = 0;
+  //search mode
+  previousKeyword: string = '';
 
   constructor(
     private workerService: WorkerServiceService,
@@ -64,10 +66,30 @@ export class WorkerListComponent implements OnInit {
 
   handleSearchMode() {
     let keyword: string = this.route.snapshot.queryParamMap.get('keyword')!;
-    console.log('Search mode:' + keyword);
+
+    if (keyword != this.previousKeyword) {
+      this.currentPage = 1;
+    }
+    this.previousKeyword = keyword;
+
+    this.workerService
+      .getWorkerWithKeyword(keyword, this.currentPage - 1)
+      .subscribe((data: any) => {
+        this.workers = data.workers;
+        this.currentPage = data.currentPage + 1;
+        this.totalElements = +data.totalElements;
+      });
   }
 
   seeWorkerDetail(id: any) {
     this.router.navigate(['/workers/' + id]);
+  }
+
+  onSearchSubmit(value: string) {
+    if (value === '' || value.length === 0) {
+      this.router.navigate(['/workers']);
+    } else {
+      this.router.navigate(['/workers'], { queryParams: { keyword: value } });
+    }
   }
 }
