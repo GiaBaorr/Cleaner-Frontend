@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { WorkerServiceService } from 'src/app/services/worker-service.service';
 import { Worker } from 'src/app/common/worker';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-worker-list',
@@ -23,7 +24,8 @@ export class WorkerListComponent implements OnInit {
     private workerService: WorkerServiceService,
     private route: ActivatedRoute,
     private ngxService: NgxUiLoaderService,
-    private router: Router
+    private router: Router,
+    private toast: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -65,7 +67,9 @@ export class WorkerListComponent implements OnInit {
   }
 
   handleSearchMode() {
-    let keyword: string = this.route.snapshot.queryParamMap.get('keyword')!;
+    let keyword: string = this.route.snapshot.queryParamMap
+      .get('keyword')!
+      .trim();
 
     if (keyword != this.previousKeyword) {
       this.currentPage = 1;
@@ -78,6 +82,10 @@ export class WorkerListComponent implements OnInit {
         this.workers = data.workers;
         this.currentPage = data.currentPage + 1;
         this.totalElements = +data.totalElements;
+        //async
+        if (this.workers.length == 0) {
+          this.toast.info('No workers found');
+        }
       });
   }
 

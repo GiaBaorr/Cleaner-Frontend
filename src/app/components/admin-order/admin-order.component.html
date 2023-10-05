@@ -1,1 +1,66 @@
-<p>admin-order works!</p>
+<div class="container" style="margin: 20px">
+  <!-- title -->
+  <h3 class="title">Manage Order History</h3>
+
+  <!-- search -->
+  <div class="search-section">
+    <form
+      (submit)="onSubmit(form.value.inputField)"
+      #form="ngForm"
+      class="form"
+    >
+      <input
+        type="text"
+        id="inputField"
+        ngModel
+        name="inputField"
+        placeholder="Search"
+      />
+      <span class="button">
+        <button type="submit" (click)="onSubmit(form.value.inputField)">
+          <span class="fa fa-search"></span>
+        </button>
+      </span>
+    </form>
+  </div>
+  <!-- spacer -->
+
+  <!-- list -->
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Date</th>
+        <th>Guest Name</th>
+        <th>Worker Name</th>
+        <th>Rate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr scope="row" *ngFor="let order of orders; index as i">
+        <td>{{ i + 1 }}</td>
+        <td>{{ order.date }}</td>
+        <td>{{ order.guestName }}</td>
+        <td>{{ order.workerName }}</td>
+        <td>{{ order.rate }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- paging -->
+  <div class="row" style="margin-top: 30px">
+    <div class="col-md-8"></div>
+    <div class="col-md-4" style="display: flex; justify-content: center">
+      <ngb-pagination
+        [(page)]="currentPage"
+        [pageSize]="pageSize"
+        [collectionSize]="totalElements"
+        (pageChange)="listOrders()"
+        [maxSize]="4"
+        [boundaryLinks]="true"
+      >
+      </ngb-pagination>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>

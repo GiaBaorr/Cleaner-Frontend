@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MaterialModule } from './shared/material-module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
@@ -26,6 +26,7 @@ import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.com
 import { AdminOrderComponent } from './components/admin-order/admin-order.component';
 import { AdminWorkerComponent } from './components/admin-worker/admin-worker.component';
 import { AdminAccountComponent } from './components/admin-account/admin-account.component';
+import { TokenInterceptorService } from './services/token-interceptor.service';
 
 const routes: Routes = [
   {
@@ -109,7 +110,13 @@ const ngx_ui_loader_config: NgxUiLoaderConfig = {
     ToastrModule.forRoot(),
     RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
   //HeaderComponent, FooterComponent, HomeComponent
 })
