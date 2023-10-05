@@ -83,7 +83,9 @@
           <i class="fa-regular fa-star" *ngFor="let r of leftOverStar"></i>
         </p>
         <div class="button-container">
-          <button class="thue">Thuê</button>
+          <button (click)="onHireWorker()" class="thue">
+            Hire this worker
+          </button>
         </div>
         <!-- <div class="button-container">
           <button class="donate">Donate</button>

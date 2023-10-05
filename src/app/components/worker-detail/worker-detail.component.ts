@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Worker } from 'src/app/common/worker';
 import { WorkerServiceService } from 'src/app/services/worker-service.service';
+import { HiringWorkerComponent } from '../hiring-worker/hiring-worker.component';
 
 @Component({
   selector: 'app-worker-detail',
@@ -18,11 +20,12 @@ export class WorkerDetailComponent implements OnInit {
 
   constructor(
     private WorkerService: WorkerServiceService,
-    private router: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private matDialog: MatDialog
   ) {}
 
   ngOnInit(): void {
-    let id = this.router.snapshot.params['id'];
+    let id = this.activatedRoute.snapshot.params['id'];
 
     this.WorkerService.getWorkerDetail(id).subscribe((worker) => {
       this.currentWorker = worker;
@@ -50,5 +53,16 @@ export class WorkerDetailComponent implements OnInit {
   createArrForStar(rate: number) {
     this.ratedStar = new Array(rate);
     this.leftOverStar = new Array(5 - rate);
+  }
+
+  onHireWorker() {
+    const matConfig = new MatDialogConfig();
+    //config
+    matConfig.width = '550px';
+    matConfig.data = {
+      workerId: this.currentWorker?.id,
+    };
+    //open
+    this.matDialog.open(HiringWorkerComponent, matConfig);
   }
 }

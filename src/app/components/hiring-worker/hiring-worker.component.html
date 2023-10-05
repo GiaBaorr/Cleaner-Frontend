@@ -1,0 +1,98 @@
+<mat-toolbar class="dialog-header">
+  <mat-toolbar-row fxLayout="row">
+    <span>Hire this worker</span>
+    <span class="spacer"></span>
+    <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<!-- content -->
+<mat-dialog-content class="mat-typography dialog-body">
+  <form [formGroup]="hireForm">
+    <div fxFlex fxLayout="column">
+      <mat-form-field appearance="fill" fxFlex>
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="guestEmail" required />
+        <mat-error
+          *ngIf="
+            hireForm.controls.guestEmail.touched &&
+            hireForm.controls.guestEmail.invalid
+          "
+        >
+          <span *ngIf="hireForm.controls.guestEmail.errors.required"
+            >This field is mandatory</span
+          >
+          <span *ngIf="hireForm.controls.guestEmail.errors.pattern"
+            >This field is invalid</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" fxFlex>
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="guestName" required />
+        <mat-error
+          *ngIf="
+            hireForm.controls.guestName.touched &&
+            hireForm.controls.guestName.invalid
+          "
+        >
+          <span *ngIf="hireForm.controls.guestName.errors.required"
+            >This field is mandatory</span
+          >
+          <span *ngIf="hireForm.controls.guestName.errors.pattern"
+            >This field is invalid</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" fxFlex>
+        <mat-label>Phone</mat-label>
+        <input matInput formControlName="guestPhone" required />
+        <mat-error
+          *ngIf="
+            hireForm.controls.guestPhone.touched &&
+            hireForm.controls.guestPhone.invalid
+          "
+        >
+          <span *ngIf="hireForm.controls.guestPhone.errors.required"
+            >This field is mandatory</span
+          >
+          <span *ngIf="hireForm.controls.guestPhone.errors.pattern"
+            >This field is invalid</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" fxFlex>
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="guestAddress" required />
+        <mat-error
+          *ngIf="
+            hireForm.controls.guestAddress.touched &&
+            hireForm.controls.guestAddress.invalid
+          "
+        >
+          <span *ngIf="hireForm.controls.guestAddress.errors.required"
+            >This field is mandatory</span
+          >
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<!-- end content -->
+<mat-dialog-actions align="end" class="pr-24" class="dialog-footer">
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="handleSubmitHire()"
+    type="submit"
+    [disabled]="!(hireForm.valid && hireForm.dirty)"
+    class="login-button"
+  >
+    <mat-icon>flight_takeoff</mat-icon> Hire
+  </button>
+  <button mat-raised-button color="warn" mat-dialog-close="">
+    <mat-icon>cancel</mat-icon>Close
+  </button>
+</mat-dialog-actions>

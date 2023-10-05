@@ -27,6 +27,7 @@ import { AdminOrderComponent } from './components/admin-order/admin-order.compon
 import { AdminWorkerComponent } from './components/admin-worker/admin-worker.component';
 import { AdminAccountComponent } from './components/admin-account/admin-account.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { HiringWorkerComponent } from './components/hiring-worker/hiring-worker.component';
 
 const routes: Routes = [
   {
@@ -97,6 +98,7 @@ const ngx_ui_loader_config: NgxUiLoaderConfig = {
     AdminOrderComponent,
     AdminWorkerComponent,
     AdminAccountComponent,
+    HiringWorkerComponent,
   ],
   imports: [
     BrowserModule,

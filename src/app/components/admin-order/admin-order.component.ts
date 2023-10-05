@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { Order } from 'src/app/common/order';
@@ -26,7 +26,8 @@ export class AdminOrderComponent implements OnInit {
     private orderService: OrderService,
     private activatedRoute: ActivatedRoute,
     private ngxService: NgxUiLoaderService,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private router: Router
   ) {}
 
   //
@@ -85,19 +86,25 @@ export class AdminOrderComponent implements OnInit {
           this.currentPage = data.currentPage + 1;
           this.totalElements = +data.totalElements;
           this.pageSize = +data.pageSize;
+          //async
+          if (this.orders.length == 0) {
+            this.toast.info('No orders found');
+          }
         },
         (error) => {
           this.toast.error('Failed to get order history');
           this.ngxService.stop();
         }
       );
-
-    if (this.orders.length == 0) {
-      this.toast.info('No orders found');
-    }
   }
 
-  onSubmit(value: any): void {
-    console.log(value);
+  onSubmit(value: string): void {
+    if (value === '' || value.length === 0) {
+      this.router.navigate(['/admin/order']);
+    } else {
+      this.router.navigate(['/admin/order'], {
+        queryParams: { keyword: value },
+      });
+    }
   }
 }

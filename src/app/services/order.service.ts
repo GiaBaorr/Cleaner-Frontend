@@ -22,7 +22,7 @@ export class OrderService {
     currentPage: number
   ): Observable<OrderHistoryList> {
     return this.httpClient.get<OrderHistoryList>(
-      this.baseUrl + '?keyword' + keyword + '?page=' + currentPage
+      this.baseUrl + '/search?keyword=' + keyword + '&page=' + currentPage
     );
   }
 }
