@@ -21,3 +21,29 @@ body {
   margin: 0;
   box-sizing: border-box;
 }
+
+.dialog-panel {
+  //header
+  mat-toolbar-row {
+    background-color: #3a658b;
+    span {
+      font-weight: bold;
+    }
+    border-bottom: 2px solid white;
+  }
+  // content
+  mat-dialog-content {
+    background-color: #3a658b;
+  }
+  //actions
+  mat-dialog-actions {
+    background-color: #3a658b;
+    margin: 0;
+    padding-bottom: 10px;
+    border-top: 2px solid white;
+  }
+}
+.invalid-span {
+  font-size: 14px;
+  color: white;
+}

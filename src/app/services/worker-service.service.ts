@@ -22,19 +22,53 @@ export class WorkerServiceService {
     );
   }
 
+  getAllWorkersWithPaginationFromAdmin(
+    currentPage: number
+  ): Observable<WorkerList> {
+    return this.httpClient.get<WorkerList>(
+      this.baseUrl + '/admin?page=' + currentPage
+    );
+  }
+
   getWorkerWithKeyword(keyword: string, page: number): Observable<WorkerList> {
     return this.httpClient.get<WorkerList>(
       this.baseUrl + '/search?keyword=' + keyword + '&page=' + page
+    );
+  }
+  getWorkerWithKeywordFromAdmin(
+    keyword: string,
+    page: number
+  ): Observable<WorkerList> {
+    return this.httpClient.get<WorkerList>(
+      this.baseUrl + '/admin/search?keyword=' + keyword + '&page=' + page
     );
   }
 
   getWorkerDetail(id: number): Observable<Worker> {
     return this.httpClient.get<Worker>(this.baseUrl + '/' + id);
   }
+
+  hireWorkerWithData(data: any) {
+    let url = 'https://localhost:5001/api/orderhistory/hire';
+
+    return this.httpClient.post(url, data);
+  }
+
+  updateWorkerStatus(data: any) {
+    let url = this.baseUrl + '/admin/status';
+
+    return this.httpClient.post(url, data);
+  }
+
+  updateWorkerData(data: any) {
+    let url = this.baseUrl + '/admin/update';
+
+    return this.httpClient.put(url, data);
+  }
 }
 
 interface WorkerList {
-  workers: Worker[];
+  list: Worker[];
   currentPage: number;
   pageSize: number;
   totalElements: number;

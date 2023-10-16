@@ -12,7 +12,7 @@
   <form [formGroup]="signUpForm">
     <div fxFlex fxLayout="column">
       <!-- email -->
-      <mat-form-field appearance="fill" fxFlex>
+      <mat-form-field appearance="outline" fxFlex>
         <mat-label>Email</mat-label>
         <input matInput formControlName="email" required />
         <mat-error
@@ -21,16 +21,20 @@
             signUpForm.controls.email.invalid
           "
         >
-          <span *ngIf="signUpForm.controls.email.errors.required"
+          <span
+            class="invalid-span"
+            *ngIf="signUpForm.controls.email.errors.required"
             >This field is mandatory</span
           >
-          <span *ngIf="signUpForm.controls.email.errors.pattern"
+          <span
+            class="invalid-span"
+            *ngIf="signUpForm.controls.email.errors.pattern"
             >This field is invalid</span
           >
         </mat-error>
       </mat-form-field>
       <!-- fullName -->
-      <mat-form-field appearance="fill" fxFlex>
+      <mat-form-field appearance="outline" fxFlex>
         <mat-label>Full Name</mat-label>
         <input matInput formControlName="fullName" required />
         <mat-error
@@ -39,16 +43,20 @@
             signUpForm.controls.fullName.invalid
           "
         >
-          <span *ngIf="signUpForm.controls.fullName.errors.required"
+          <span
+            class="invalid-span"
+            *ngIf="signUpForm.controls.fullName.errors.required"
             >This field is mandatory</span
           >
-          <span *ngIf="signUpForm.controls.fullName.errors.pattern"
+          <span
+            class="invalid-span"
+            *ngIf="signUpForm.controls.fullName.errors.pattern"
             >This field is invalid</span
           >
         </mat-error>
       </mat-form-field>
       <!-- Phone Number -->
-      <mat-form-field appearance="fill" fxFlex>
+      <mat-form-field appearance="outline" fxFlex>
         <mat-label>Phone Number</mat-label>
         <input matInput formControlName="phoneNumber" required />
         <mat-error
@@ -57,16 +65,20 @@
             signUpForm.controls.phoneNumber.invalid
           "
         >
-          <span *ngIf="signUpForm.controls.phoneNumber.errors.required"
+          <span
+            class="invalid-span"
+            *ngIf="signUpForm.controls.phoneNumber.errors.required"
             >This field is mandatory</span
           >
-          <span *ngIf="signUpForm.controls.phoneNumber.errors.pattern"
+          <span
+            class="invalid-span"
+            *ngIf="signUpForm.controls.phoneNumber.errors.pattern"
             >This field is invalid</span
           >
         </mat-error>
       </mat-form-field>
       <!-- Address -->
-      <mat-form-field appearance="fill" fxFlex>
+      <mat-form-field appearance="outline" fxFlex>
         <mat-label>Address</mat-label>
         <input matInput formControlName="address" required />
         <mat-error
@@ -75,13 +87,15 @@
             signUpForm.controls.address.invalid
           "
         >
-          <span *ngIf="signUpForm.controls.address.errors.required"
+          <span
+            class="invalid-span"
+            *ngIf="signUpForm.controls.address.errors.required"
             >This field is mandatory</span
           >
         </mat-error>
       </mat-form-field>
       <!-- password1 -->
-      <mat-form-field appearance="fill" fxFlex>
+      <mat-form-field appearance="outline" fxFlex>
         <mat-label>Password</mat-label>
         <input
           matInput
@@ -105,7 +119,9 @@
             signUpForm.controls.password1.invalid
           "
         >
-          <span *ngIf="signUpForm.controls.password1.errors.required"
+          <span
+            class="invalid-span"
+            *ngIf="signUpForm.controls.password1.errors.required"
             >This field is mandatory</span
           >
           <span
@@ -118,7 +134,7 @@
         </mat-error>
       </mat-form-field>
       <!-- password2 -->
-      <mat-form-field appearance="fill" fxFlex>
+      <mat-form-field appearance="outline" fxFlex>
         <mat-label>Confirm Password</mat-label>
         <input
           matInput
@@ -142,7 +158,9 @@
             signUpForm.controls.password2.invalid
           "
         >
-          <span *ngIf="signUpForm.controls.password2.errors.required"
+          <span
+            class="invalid-span"
+            *ngIf="signUpForm.controls.password2.errors.required"
             >This field is mandatory</span
           >
           <span
@@ -152,7 +170,10 @@
             "
             >This field length must be between 6-18</span
           >
-          <span *ngIf="signUpForm.controls.password2.errors.confirmedValidator">
+          <span
+            class="invalid-span"
+            *ngIf="signUpForm.controls.password2.errors.confirmedValidator"
+          >
             Passwords are not match.
           </span>
         </mat-error>

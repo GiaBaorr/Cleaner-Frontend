@@ -8,10 +8,10 @@
   </mat-toolbar-row>
 </mat-toolbar>
 <!-- content -->
-<mat-dialog-content class="mat-typography dialog-body">
+<mat-dialog-content *ngIf="!isLoggedIn" class="mat-typography dialog-body">
   <form [formGroup]="hireForm">
     <div fxFlex fxLayout="column">
-      <mat-form-field appearance="fill" fxFlex>
+      <mat-form-field appearance="outline" fxFlex>
         <mat-label>Email</mat-label>
         <input matInput formControlName="guestEmail" required />
         <mat-error
@@ -20,15 +20,19 @@
             hireForm.controls.guestEmail.invalid
           "
         >
-          <span *ngIf="hireForm.controls.guestEmail.errors.required"
+          <span
+            class="invalid-span"
+            *ngIf="hireForm.controls.guestEmail.errors.required"
             >This field is mandatory</span
           >
-          <span *ngIf="hireForm.controls.guestEmail.errors.pattern"
+          <span
+            class="invalid-span"
+            *ngIf="hireForm.controls.guestEmail.errors.pattern"
             >This field is invalid</span
           >
         </mat-error>
       </mat-form-field>
-      <mat-form-field appearance="fill" fxFlex>
+      <mat-form-field appearance="outline" fxFlex>
         <mat-label>Name</mat-label>
         <input matInput formControlName="guestName" required />
         <mat-error
@@ -37,15 +41,19 @@
             hireForm.controls.guestName.invalid
           "
         >
-          <span *ngIf="hireForm.controls.guestName.errors.required"
+          <span
+            class="invalid-span"
+            *ngIf="hireForm.controls.guestName.errors.required"
             >This field is mandatory</span
           >
-          <span *ngIf="hireForm.controls.guestName.errors.pattern"
+          <span
+            class="invalid-span"
+            *ngIf="hireForm.controls.guestName.errors.pattern"
             >This field is invalid</span
           >
         </mat-error>
       </mat-form-field>
-      <mat-form-field appearance="fill" fxFlex>
+      <mat-form-field appearance="outline" fxFlex>
         <mat-label>Phone</mat-label>
         <input matInput formControlName="guestPhone" required />
         <mat-error
@@ -54,15 +62,19 @@
             hireForm.controls.guestPhone.invalid
           "
         >
-          <span *ngIf="hireForm.controls.guestPhone.errors.required"
+          <span
+            class="invalid-span"
+            *ngIf="hireForm.controls.guestPhone.errors.required"
             >This field is mandatory</span
           >
-          <span *ngIf="hireForm.controls.guestPhone.errors.pattern"
+          <span
+            class="invalid-span"
+            *ngIf="hireForm.controls.guestPhone.errors.pattern"
             >This field is invalid</span
           >
         </mat-error>
       </mat-form-field>
-      <mat-form-field appearance="fill" fxFlex>
+      <mat-form-field appearance="outline" fxFlex>
         <mat-label>Address</mat-label>
         <input matInput formControlName="guestAddress" required />
         <mat-error
@@ -71,7 +83,9 @@
             hireForm.controls.guestAddress.invalid
           "
         >
-          <span *ngIf="hireForm.controls.guestAddress.errors.required"
+          <span
+            class="invalid-span"
+            *ngIf="hireForm.controls.guestAddress.errors.required"
             >This field is mandatory</span
           >
         </mat-error>
@@ -80,9 +94,14 @@
   </form>
 </mat-dialog-content>
 
+<mat-dialog-content *ngIf="isLoggedIn" class="mat-typography dialog-body">
+  <p>Your information was saved.</p>
+</mat-dialog-content>
+
 <!-- end content -->
 <mat-dialog-actions align="end" class="pr-24" class="dialog-footer">
   <button
+    *ngIf="!isLoggedIn"
     mat-raised-button
     color="primary"
     (click)="handleSubmitHire()"
@@ -92,6 +111,18 @@
   >
     <mat-icon>flight_takeoff</mat-icon> Hire
   </button>
+
+  <button
+    *ngIf="isLoggedIn"
+    mat-raised-button
+    color="primary"
+    (click)="handleSubmitHire()"
+    type="submit"
+    class="login-button"
+  >
+    <mat-icon>flight_takeoff</mat-icon> Hire
+  </button>
+
   <button mat-raised-button color="warn" mat-dialog-close="">
     <mat-icon>cancel</mat-icon>Close
   </button>

@@ -1,1 +1,85 @@
-<p>admin-worker works!</p>
+<div class="container" style="margin: 20px">
+  <!-- title -->
+  <h3 class="title">Manage Worker</h3>
+
+  <!-- search -->
+  <div class="search-section">
+    <form
+      (submit)="onSubmit(form.value.inputField)"
+      #form="ngForm"
+      class="form"
+    >
+      <input
+        type="text"
+        id="inputField"
+        ngModel
+        name="inputField"
+        placeholder="Search with worker's information..."
+      />
+      <span class="button">
+        <button type="submit" (click)="onSubmit(form.value.inputField)">
+          <span class="fa fa-search"></span>
+        </button>
+      </span>
+    </form>
+  </div>
+  <!-- spacer -->
+
+  <!-- list -->
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Fee</th>
+        <th>Rate</th>
+        <th>Chores</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        scope="row"
+        *ngFor="let worker of workers; index as i"
+        (click)="onEditWorker($event, worker)"
+      >
+        <td>{{ i + 1 }}</td>
+        <td>{{ worker.name }}</td>
+        <td>{{ worker.address }}</td>
+        <td>{{ worker.fee | currency : "VND" }}</td>
+        <td>{{ worker.averageRate }}/5</td>
+        <td>
+          <p *ngFor="let c of worker.chores">
+            {{ c.name }}
+          </p>
+        </td>
+        <td>
+          <mat-slide-toggle
+            [checked]="worker.status"
+            matTooltip="Activate or Deactivate"
+            (change)="onChange($event, worker.id!, worker.version!)"
+            (click)="$event.stopPropagation()"
+          ></mat-slide-toggle>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- paging -->
+  <div class="row" style="margin-top: 30px">
+    <div class="col-md-8"></div>
+    <div class="col-md-4" style="display: flex; justify-content: center">
+      <ngb-pagination
+        [(page)]="currentPage"
+        [pageSize]="pageSize"
+        [collectionSize]="totalElements"
+        (pageChange)="listWorkers()"
+        [maxSize]="4"
+        [boundaryLinks]="true"
+      >
+      </ngb-pagination>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>

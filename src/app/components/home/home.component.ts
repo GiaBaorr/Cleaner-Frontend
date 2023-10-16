@@ -12,22 +12,5 @@ import { Worker } from 'src/app/common/worker';
 })
 export class HomeComponent {
   // Constructor
-  constructor(
-    private matDialog: MatDialog,
-    private workerService: WorkerServiceService
-  ) {}
-
-  handleLoginAction() {
-    const matConfig = new MatDialogConfig();
-    matConfig.width = '550px';
-    this.matDialog.open(LoginComponent, matConfig);
-  }
-
-  handleSignUpAction() {
-    const matConfig = new MatDialogConfig();
-    matConfig.width = '550px';
-    this.matDialog.open(SignupComponent, matConfig);
-  }
-
-  testApi() {}
+  constructor() {}
 }

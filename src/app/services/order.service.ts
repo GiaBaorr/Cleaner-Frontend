@@ -28,7 +28,7 @@ export class OrderService {
 }
 
 interface OrderHistoryList {
-  orderHistories: Order[];
+  list: Order[];
   currentPage: number;
   pageSize: number;
   totalElements: number;

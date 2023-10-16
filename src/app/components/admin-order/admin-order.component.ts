@@ -55,7 +55,7 @@ export class AdminOrderComponent implements OnInit {
     this.orderService.getOrderHistory(this.currentPage - 1).subscribe(
       (data) => {
         this.ngxService.stop();
-        this.orders = data.orderHistories;
+        this.orders = data.list;
         this.currentPage = data.currentPage + 1;
         this.totalElements = +data.totalElements;
         this.pageSize = +data.pageSize;
@@ -82,7 +82,7 @@ export class AdminOrderComponent implements OnInit {
       .subscribe(
         (data) => {
           this.ngxService.stop();
-          this.orders = data.orderHistories;
+          this.orders = data.list;
           this.currentPage = data.currentPage + 1;
           this.totalElements = +data.totalElements;
           this.pageSize = +data.pageSize;

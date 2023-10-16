@@ -60,7 +60,7 @@ export class WorkerListComponent implements OnInit {
       .getAllWorkersWithPagination(this.currentPage - 1)
       .subscribe((data: any) => {
         this.ngxService.stop();
-        this.workers = data.workers;
+        this.workers = data.list;
         this.currentPage = data.currentPage + 1;
         this.totalElements = +data.totalElements;
       });
@@ -79,7 +79,7 @@ export class WorkerListComponent implements OnInit {
     this.workerService
       .getWorkerWithKeyword(keyword, this.currentPage - 1)
       .subscribe((data: any) => {
-        this.workers = data.workers;
+        this.workers = data.list;
         this.currentPage = data.currentPage + 1;
         this.totalElements = +data.totalElements;
         //async

@@ -8,6 +8,8 @@ export class Worker {
   public address?: string;
   public countOrder?: number;
   public averageRate?: number;
+  public status?: boolean;
   public chores?: HouseholdChore[];
   public reviews?: Review[];
+  public version?: string;
 }

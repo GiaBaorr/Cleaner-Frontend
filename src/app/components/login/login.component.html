@@ -11,7 +11,7 @@
 <mat-dialog-content class="mat-typography dialog-body">
   <form [formGroup]="loginForm">
     <div fxFlex fxLayout="column">
-      <mat-form-field appearance="fill" fxFlex>
+      <mat-form-field appearance="outline" fxFlex>
         <mat-label>Email</mat-label>
         <input matInput formControlName="email" required />
         <mat-error
@@ -19,16 +19,20 @@
             loginForm.controls.email.touched && loginForm.controls.email.invalid
           "
         >
-          <span *ngIf="loginForm.controls.email.errors.required"
+          <span
+            style="font-size: 16px; color: white"
+            *ngIf="loginForm.controls.email.errors.required"
             >This field is mandatory</span
           >
-          <span *ngIf="loginForm.controls.email.errors.pattern"
+          <span
+            style="font-size: 16px; color: white"
+            *ngIf="loginForm.controls.email.errors.pattern"
             >This field is invalid</span
           >
         </mat-error>
       </mat-form-field>
       <!-- password -->
-      <mat-form-field appearance="fill" fxFlex>
+      <mat-form-field appearance="outline" fxFlex>
         <mat-label>Password</mat-label>
         <input
           matInput
@@ -52,7 +56,9 @@
             loginForm.controls.password.invalid
           "
         >
-          <span *ngIf="loginForm.controls.password.errors.required"
+          <span
+            style="font-size: 16px; color: white"
+            *ngIf="loginForm.controls.password.errors.required"
             >This field is mandatory</span
           >
         </mat-error>

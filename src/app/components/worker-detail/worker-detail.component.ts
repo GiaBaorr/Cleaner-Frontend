@@ -59,6 +59,7 @@ export class WorkerDetailComponent implements OnInit {
     const matConfig = new MatDialogConfig();
     //config
     matConfig.width = '550px';
+    matConfig.panelClass = 'dialog-panel';
     matConfig.data = {
       workerId: this.currentWorker?.id,
     };

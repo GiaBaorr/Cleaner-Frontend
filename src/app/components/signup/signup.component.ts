@@ -1,21 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  AbstractControl,
-  FormArray,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  ValidatorFn,
-  Validators,
-} from '@angular/forms';
-import { MatCheckboxChange } from '@angular/material/checkbox';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
-import { HouseholdChore } from 'src/app/common/household-chore';
 import { GlobalConstants } from 'src/app/global-constant';
 import { AccountService } from 'src/app/services/account.service';
-import { HouseholdChoresService } from 'src/app/services/household-chores.service';
-import { LoginComponent } from '../login/login.component';
 import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 
@@ -23,6 +11,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class SignupComponent implements OnInit {
   signUpForm: any = FormGroup;

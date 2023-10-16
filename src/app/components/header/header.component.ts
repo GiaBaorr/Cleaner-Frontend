@@ -57,12 +57,14 @@ export class HeaderComponent implements OnInit {
   onOpenLogin() {
     const matConfig = new MatDialogConfig();
     matConfig.width = '550px';
+    matConfig.panelClass = 'dialog-panel';
     this.matDialog.open(LoginComponent, matConfig);
   }
 
   onOpenSignUp() {
     const matConfig = new MatDialogConfig();
     matConfig.width = '550px';
+    matConfig.panelClass = 'dialog-panel';
     this.matDialog.open(SignupComponent, matConfig);
   }
 
