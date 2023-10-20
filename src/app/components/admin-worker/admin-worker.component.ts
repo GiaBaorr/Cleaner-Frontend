@@ -27,7 +27,6 @@ export class AdminWorkerComponent implements OnInit {
   constructor(
     private workerService: WorkerServiceService,
     private activatedRoute: ActivatedRoute,
-    private ngxService: NgxUiLoaderService,
     private toast: ToastrService,
     private router: Router,
     private matDialog: MatDialog
@@ -37,15 +36,16 @@ export class AdminWorkerComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe(() => {
       this.listWorkers();
     });
-    this.ngxService.start();
     this.listWorkers();
-    this.ngxService.stop();
   }
 
   listWorkers() {
     this.activatedRoute.queryParamMap.subscribe((param) => {
       this.searchMode = param.has('keyword');
     });
+    if (this.activatedRoute.snapshot.queryParams['keyword']) {
+      this.searchMode = true;
+    }
 
     if (this.searchMode) {
       this.handleSearchMode();

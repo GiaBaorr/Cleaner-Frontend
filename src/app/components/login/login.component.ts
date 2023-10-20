@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
             );
           }
         } else {
-          this.toast.error('Your account is not exist', 'Invalid data');
+          this.toast.error('Your account data is not valid', 'Invalid data');
         }
         this.accountService.isLoggedIn.next(false);
       }

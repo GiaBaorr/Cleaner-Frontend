@@ -1,1 +1,248 @@
-<p>admin-account works!</p>
+<div class="container" style="margin: 20px">
+  <h3 class="title">Manage Account</h3>
+
+  <!-- search -->
+  <div class="search-section">
+    <form
+      (submit)="onSubmitSearch(form.value.inputField)"
+      #form="ngForm"
+      class="form"
+    >
+      <input
+        type="text"
+        id="inputField"
+        ngModel
+        name="inputField"
+        placeholder="Search with account's information..."
+      />
+      <span class="button">
+        <button type="submit" (click)="onSubmitSearch(form.value.inputField)">
+          <span class="fa fa-search"></span>
+        </button>
+      </span>
+    </form>
+  </div>
+  <!-- add account -->
+  <mat-accordion>
+    <mat-expansion-panel #matExpansionPanel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Action </mat-panel-title>
+        <mat-panel-description> Add new account </mat-panel-description>
+      </mat-expansion-panel-header>
+      <!-- =======BODY======= -->
+      <div class="form-body">
+        <form [formGroup]="addAccountForm">
+          <div fxFlex fxLayout="column">
+            <!-- email -->
+            <mat-form-field appearance="outline" fxFlex>
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" required />
+              <mat-error
+                *ngIf="
+                  addAccountForm.controls.email.touched &&
+                  addAccountForm.controls.email.invalid
+                "
+              >
+                <span
+                  class="invalid-span"
+                  *ngIf="addAccountForm.controls.email.errors.required"
+                  >This field is mandatory</span
+                >
+                <span
+                  class="invalid-span"
+                  *ngIf="addAccountForm.controls.email.errors.pattern"
+                  >This field is invalid</span
+                >
+              </mat-error>
+            </mat-form-field>
+            <!-- fullName -->
+            <mat-form-field appearance="outline" fxFlex>
+              <mat-label>Full Name</mat-label>
+              <input matInput formControlName="fullName" required />
+              <mat-error
+                *ngIf="
+                  addAccountForm.controls.fullName.touched &&
+                  addAccountForm.controls.fullName.invalid
+                "
+              >
+                <span
+                  class="invalid-span"
+                  *ngIf="addAccountForm.controls.fullName.errors.required"
+                  >This field is mandatory</span
+                >
+                <span
+                  class="invalid-span"
+                  *ngIf="addAccountForm.controls.fullName.errors.pattern"
+                  >This field is invalid</span
+                >
+              </mat-error>
+            </mat-form-field>
+            <!-- Phone Number -->
+            <mat-form-field appearance="outline" fxFlex>
+              <mat-label>Phone Number</mat-label>
+              <input matInput formControlName="phoneNumber" required />
+              <mat-error
+                *ngIf="
+                  addAccountForm.controls.phoneNumber.touched &&
+                  addAccountForm.controls.phoneNumber.invalid
+                "
+              >
+                <span
+                  class="invalid-span"
+                  *ngIf="addAccountForm.controls.phoneNumber.errors.required"
+                  >This field is mandatory</span
+                >
+                <span
+                  class="invalid-span"
+                  *ngIf="addAccountForm.controls.phoneNumber.errors.pattern"
+                  >This field is invalid</span
+                >
+              </mat-error>
+            </mat-form-field>
+            <!-- Address -->
+            <mat-form-field appearance="outline" fxFlex>
+              <mat-label>Address</mat-label>
+              <input matInput formControlName="address" required />
+              <mat-error
+                *ngIf="
+                  addAccountForm.controls.address.touched &&
+                  addAccountForm.controls.address.invalid
+                "
+              >
+                <span
+                  class="invalid-span"
+                  *ngIf="addAccountForm.controls.address.errors.required"
+                  >This field is mandatory</span
+                >
+              </mat-error>
+            </mat-form-field>
+            <!-- password1 -->
+            <mat-form-field appearance="outline" fxFlex>
+              <mat-label>Password</mat-label>
+              <input
+                matInput
+                formControlName="password1"
+                required
+                [type]="hide1 ? 'password' : 'text'"
+              />
+              <button
+                type="button"
+                mat-icon-button
+                matSuffix
+                (click)="hide1 = !hide1"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="'hide'"
+              >
+                <mat-icon>{{
+                  hide1 ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+              <mat-error
+                *ngIf="
+                  addAccountForm.controls.password1.touched &&
+                  addAccountForm.controls.password1.invalid
+                "
+              >
+                <span
+                  class="invalid-span"
+                  *ngIf="addAccountForm.controls.password1.errors.required"
+                  >This field is mandatory</span
+                >
+                <span
+                  *ngIf="
+                    addAccountForm.controls.password1.errors.minlength ||
+                    addAccountForm.controls.password1.errors.maxlength
+                  "
+                  >This field length must be between 6-18</span
+                >
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </form>
+        <!-- action -->
+        <div class="action">
+          <!-- CLEAN -->
+          <button mat-raised-button color="" (click)="onClearForm()">
+            <mat-icon> format_clear</mat-icon> Clear
+          </button>
+          <!-- SUBMIT -->
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            (click)="onSubmitAccount()"
+            [disabled]="!(addAccountForm.valid && addAccountForm.dirty)"
+          >
+            <mat-icon>mail</mat-icon> Add
+          </button>
+          <!-- CLOSE -->
+          <button mat-raised-button color="warn" (click)="onCloseForm()">
+            <mat-icon>cancel</mat-icon> Close
+          </button>
+        </div>
+      </div>
+      <!-- end body -->
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <!-- list -->
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr scope="row" *ngFor="let account of accounts; index as i">
+        <td>{{ i + 1 }}</td>
+        <td>{{ account.name }}</td>
+        <td>{{ account.phone }}</td>
+        <td>{{ account.email }}</td>
+        <td>
+          <a
+            *ngIf="account.role == 'worker'"
+            matTooltip="Edit"
+            routerLink="/admin/worker"
+            style="color: #10c3e4"
+            [queryParams]="{ keyword: account.name }"
+          >
+            {{ account.role }}
+          </a>
+          <span *ngIf="account.role !== 'worker'">{{ account.role }}</span>
+        </td>
+        <td>
+          <mat-icon
+            *ngIf="account.role == 'user'"
+            [ngStyle]="{ color: 'red' }"
+            matTooltip="Delete"
+            (click)="confirmDelete(account)"
+          >
+            delete_forever
+          </mat-icon>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- paging -->
+  <div class="row" style="margin-top: 30px">
+    <div class="col-md-8"></div>
+    <div class="col-md-4" style="display: flex; justify-content: center">
+      <ngb-pagination
+        [(page)]="currentPage"
+        [pageSize]="pageSize"
+        [collectionSize]="totalElements"
+        (pageChange)="listAccounts()"
+        [maxSize]="4"
+        [boundaryLinks]="true"
+      >
+      </ngb-pagination>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
+import { Account } from '../common/account';
 
 @Injectable({
   providedIn: 'root',
@@ -22,4 +23,40 @@ export class AccountService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     });
   }
+
+  getAccountForAdminWithPagination(currentPage: number) {
+    let url = this.baseUrl + '/admin?page=' + currentPage;
+
+    return this.httpClient.get<AccountList>(url);
+  }
+
+  getAccountForAdminWitKeyword(keyword: string, currentPage: number) {
+    let url =
+      this.baseUrl +
+      '/admin/search?page=' +
+      currentPage +
+      '&keyword=' +
+      keyword;
+
+    return this.httpClient.get<AccountList>(url);
+  }
+
+  deleteAccountUserRole(id: number) {
+    let url = this.baseUrl + '/admin/delete/' + id;
+    return this.httpClient.delete(url);
+  }
+
+  adminAddAccount(data: any) {
+    return this.httpClient.post(this.baseUrl + '/admin/add', data, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    });
+  }
+}
+
+interface AccountList {
+  list: Account[];
+
+  currentPage: number;
+  pageSize: number;
+  totalElements: number;
 }

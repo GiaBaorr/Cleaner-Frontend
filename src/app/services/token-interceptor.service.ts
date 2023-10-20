@@ -29,7 +29,6 @@ export class TokenInterceptorService implements HttpInterceptor {
     return next.handle(req).pipe(
       catchError((error) => {
         if (error instanceof HttpErrorResponse) {
-          console.log(error.url);
           if (error.status == 401 || error.status == 403) {
             if (this.router.url === '/') {
             } else {
@@ -38,7 +37,7 @@ export class TokenInterceptorService implements HttpInterceptor {
             }
           }
         }
-        return throwError(() => new Error('Unauthorized request'));
+        return throwError(() => error);
       })
     );
   }
