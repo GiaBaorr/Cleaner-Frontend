@@ -6,10 +6,12 @@ export class Worker {
   public name?: string;
   public fee?: number;
   public address?: string;
+  public photoUrl?: string;
   public countOrder?: number;
   public averageRate?: number;
   public status?: boolean;
   public chores?: HouseholdChore[];
   public reviews?: Review[];
   public version?: string;
+  public workingState?: string;
 }

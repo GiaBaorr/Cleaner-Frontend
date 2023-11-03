@@ -29,6 +29,16 @@ import { AdminAccountComponent } from './components/admin-account/admin-account.
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { HiringWorkerComponent } from './components/hiring-worker/hiring-worker.component';
 import { UpdateWorkerDialogComponent } from './components/update-worker-dialog/update-worker-dialog.component';
+import { AppUserNavbarComponent } from './components/app-user-navbar/app-user-navbar.component';
+import { UserAccountComponent } from './components/user-account/user-account.component';
+import { UserEnrollComponent } from './components/user-enroll/user-enroll.component';
+import { WorkerAccountComponent } from './components/worker-account/worker-account.component';
+import { WorkerOrderComponent } from './components/worker-order/worker-order.component';
+import { MatCardModule } from '@angular/material/card';
+import { NgOtpInputComponent, NgOtpInputModule } from 'ng-otp-input';
+import { UserOrdersComponent } from './components/user-orders/user-orders.component';
+import { UserReviewOrderDialogComponent } from './components/user-review-order-dialog/user-review-order-dialog.component';
+import { GuestReviewOrderComponent } from './components/guest-review-order/guest-review-order.component';
 
 const routes: Routes = [
   {
@@ -62,9 +72,50 @@ const routes: Routes = [
     component: UserDetailComponent,
     canActivate: [RouteGuardService],
     data: { expectedRole: ['user', 'worker'] },
+    children: [
+      {
+        path: 'account',
+        component: UserAccountComponent,
+        canActivate: [RouteGuardService],
+        data: { expectedRole: ['user'] },
+      },
+      {
+        path: 'enroll',
+        component: UserEnrollComponent,
+        canActivate: [RouteGuardService],
+        data: { expectedRole: ['user'] },
+      },
+      {
+        path: 'orders',
+        component: UserOrdersComponent,
+        canActivate: [RouteGuardService],
+        data: { expectedRole: ['user'] },
+      },
+    ],
+  },
+  {
+    path: 'worker',
+    component: UserDetailComponent,
+    canActivate: [RouteGuardService],
+    data: { expectedRole: ['user', 'worker'] },
+    children: [
+      {
+        path: 'account',
+        component: UserAccountComponent,
+        canActivate: [RouteGuardService],
+        data: { expectedRole: ['worker'] },
+      },
+      {
+        path: 'order',
+        component: WorkerOrderComponent,
+        canActivate: [RouteGuardService],
+        data: { expectedRole: ['worker'] },
+      },
+    ],
   },
   { path: 'workers/:id', component: WorkerDetailComponent },
   { path: 'workers', component: WorkerListComponent },
+  { path: 'guest/review/:id', component: GuestReviewOrderComponent },
   { path: '', redirectTo: '/workers', pathMatch: 'full' },
   { path: '**', component: NotFoundPageComponent },
 ];
@@ -101,8 +152,17 @@ const ngx_ui_loader_config: NgxUiLoaderConfig = {
     AdminAccountComponent,
     HiringWorkerComponent,
     UpdateWorkerDialogComponent,
+    AppUserNavbarComponent,
+    WorkerAccountComponent,
+    WorkerOrderComponent,
+    UserEnrollComponent,
+    UserAccountComponent,
+    UserOrdersComponent,
+    UserReviewOrderDialogComponent,
+    GuestReviewOrderComponent,
   ],
   imports: [
+    NgOtpInputModule,
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
@@ -113,6 +173,7 @@ const ngx_ui_loader_config: NgxUiLoaderConfig = {
     NgxUiLoaderModule.forRoot(ngx_ui_loader_config),
     ToastrModule.forRoot(),
     RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
+    MatCardModule,
   ],
   providers: [
     {

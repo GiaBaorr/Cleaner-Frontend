@@ -1,0 +1,167 @@
+<div class="container" style="margin: 20px">
+  <!-- title -->
+  <h3 class="title">Working Information</h3>
+
+  <!-- WORKING STATE -->
+  <h6 class="sub-title">
+    Your Working State:
+    <span
+      *ngIf="currentWorker?.workingState == 'working'"
+      style="color: #b158bb"
+    >
+      <mat-icon> directions_run</mat-icon> {{ currentWorker?.workingState }}
+    </span>
+    <span *ngIf="currentWorker?.workingState == 'free'" style="color: #efb20b">
+      <mat-icon>airline_seat_flat</mat-icon>{{ currentWorker?.workingState }}
+    </span>
+    <span *ngIf="currentWorker?.workingState == 'off'" style="color: #db4141">
+      <mat-icon>alarm_off</mat-icon> {{ currentWorker?.workingState }}
+    </span>
+  </h6>
+
+  <mat-form-field class="working-state-select">
+    <mat-label
+      matTooltip="You can change your working state when you're not working"
+      >{{ currentWorker?.workingState }}</mat-label
+    >
+    <mat-select
+      (selectionChange)="onChangeWorkingState($event)"
+      placeholder="{{ currentWorker?.workingState }}"
+      [disabled]="currentWorker?.workingState == 'working'"
+    >
+      <mat-option value="free">Free</mat-option>
+      <mat-option value="off">Off</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <hr />
+  <!-- Update Info -->
+  <h6 class="sub-title">Update Info:</h6>
+  <mat-card>
+    <mat-card-header>
+      You can request to admin team to change your chores and fee
+    </mat-card-header>
+  </mat-card>
+  <hr />
+
+  <!-- Change Image -->
+  <h6 class="sub-title">Change image</h6>
+  <mat-card style="width: 100%; height: 500px">
+    <div class="image-upload">
+      <div style="width: 40%">
+        <img
+          *ngIf="
+            currentWorker?.photoUrl == null ||
+            currentWorker?.photoUrl?.length == 0
+          "
+          src="assets/placeholder.jpg"
+          class="worker-ava image-ele"
+        />
+        <img
+          *ngIf="
+            currentWorker?.photoUrl != null &&
+            currentWorker?.photoUrl?.length != 0
+          "
+          src="{{ currentWorker?.photoUrl }}"
+          class="worker-ava image-ele"
+        />
+      </div>
+
+      <!--  -->
+      <div class="image-ele upload-photo">
+        <mat-form-field class="upload-photo-ele upload-input">
+          <div>
+            <mat-toolbar>
+              <input
+                matInput
+                [value]="selectedFile ? selectedFile.name : 'Select image'"
+              />
+              <button
+                mat-flat-button
+                color="primary"
+                [disabled]="selectedFile == null"
+                (click)="uploadFiles()"
+              >
+                Upload
+              </button>
+            </mat-toolbar>
+            <input
+              type="file"
+              id="fileInput"
+              name="fileInput"
+              accept="image/png, image/jpeg"
+              (change)="selectFiles($event)"
+            />
+          </div>
+        </mat-form-field>
+        <hr />
+        <div class="upload-photo-ele preview">
+          <img
+            style="max-width: 50%; max-height: 50%"
+            src="{{ previewSrc }}"
+            alt=""
+          />
+        </div>
+      </div>
+      <!--  -->
+    </div>
+  </mat-card>
+  <hr />
+  <h3 class="title">Order History</h3>
+  <!-- list -->
+  <p *ngIf="orders.length == 0 || orders == null">
+    You don't have any finish/pending order
+  </p>
+  <mat-accordion class="example-headers-align" multi>
+    <mat-expansion-panel
+      *ngFor="let order of orders; index as i"
+      [ngClass]="{
+        'status-finish': order.status == 'finished',
+        'status-pending': order.status == 'pending',
+        'status-working': order.status == 'inprogress',
+        'status-reject': order.status == 'reject'
+      }"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{ i + 1 }}</mat-panel-title>
+        <mat-panel-title>{{ order.dateString }}</mat-panel-title>
+        <mat-panel-title>{{ order.guestName }}</mat-panel-title>
+        <mat-panel-title>{{ order.guestAddress }}</mat-panel-title>
+        <mat-panel-title>
+          {{ order.rate }}<mat-icon style="scale: 70%">stars</mat-icon>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <!-- finish -->
+      <span *ngIf="order.status == 'finished'">
+        {{ order.review?.content }}
+      </span>
+      <!-- working -->
+      <mat-action-row *ngIf="order.status == 'inprogress'">
+        <button
+          color="primary"
+          mat-raised-button
+          (click)="onFinishOrder(order.id)"
+        >
+          Finish
+        </button>
+      </mat-action-row>
+      <!-- pending -->
+      <mat-action-row *ngIf="order.status == 'pending'">
+        <button
+          color="primary"
+          mat-raised-button
+          (click)="onApproveOrder(order.id)"
+        >
+          Approve
+        </button>
+        <button
+          color="accent"
+          mat-raised-button
+          (click)="onRejectOrder(order.id)"
+        >
+          Reject
+        </button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { HouseholdChore } from '../common/household-chore';
 import { Worker } from '../common/worker';
@@ -64,6 +64,41 @@ export class WorkerServiceService {
     let url = this.baseUrl + '/admin/update';
 
     return this.httpClient.put(url, data);
+  }
+
+  rejectOrderFromWorker(orderId: number) {
+    let url = this.baseUrl + '/cancel-order/' + orderId;
+    return this.httpClient.delete(url, { responseType: 'text' });
+  }
+
+  approveOrFinishOrder(orderId: number) {
+    let url = this.baseUrl + '/order/' + orderId;
+    return this.httpClient.put(url, {}, { responseType: 'text' });
+  }
+
+  getWorkerDetailFromWorker() {
+    return this.httpClient.get<Worker>(this.baseUrl + '/info');
+  }
+
+  changeWorkingStateFromWorker() {
+    let url = this.baseUrl + '/working-state';
+
+    return this.httpClient.put(url, {}, { responseType: 'text' });
+  }
+
+  workerUploadPhoto(data: any) {
+    let url = this.baseUrl + '/upload-photo';
+
+    let form = new FormData();
+    form.append('File', data);
+
+    let header = new HttpHeaders();
+    header.append('Content-Type', 'multipart/form-data');
+
+    return this.httpClient.post(url, form, {
+      headers: header,
+      responseType: 'text',
+    });
   }
 }
 

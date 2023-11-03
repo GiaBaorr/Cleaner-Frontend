@@ -1,0 +1,25 @@
+<div class="nav-container">
+  <div class="nav-column">
+    <div class="title">
+      <a>{{ title }}</a>
+    </div>
+    <hr style="border: 2px solid #f1574a; opacity: 0.7" />
+    <!-- USER -->
+    <div class="object" *ngIf="role === 'user'">
+      <a routerLink="/user/account" routerLinkActive="select">
+        Account Settings
+      </a>
+      <a routerLink="/user/orders" routerLinkActive="select">Your orders</a>
+      <a routerLink="/user/enroll" routerLinkActive="select">Work with us</a>
+    </div>
+    <!-- WORKER -->
+    <div class="object" *ngIf="role === 'worker'">
+      <a routerLink="/worker/account" routerLinkActive="select">
+        Account Settings
+      </a>
+      <a routerLink="/worker/order" routerLinkActive="select">
+        Information & Orders
+      </a>
+    </div>
+  </div>
+</div>

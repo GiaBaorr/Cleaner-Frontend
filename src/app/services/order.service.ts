@@ -25,6 +25,27 @@ export class OrderService {
       this.baseUrl + '/search?keyword=' + keyword + '&page=' + currentPage
     );
   }
+
+  // https://localhost:5001/api/workers/orderhistories
+  getOrderHistoryFromWorker() {
+    let url = 'https://localhost:5001/api/workers/orderhistories';
+    return this.httpClient.get<Order[]>(url);
+  }
+
+  getOrderHistoryFromWUser() {
+    let url = 'https://localhost:5001/api/account/orderhistories';
+    return this.httpClient.get<Order[]>(url);
+  }
+
+  userReviewOrder(data: any) {
+    let url = this.baseUrl + '/review';
+    return this.httpClient.post(url, data);
+  }
+
+  getOrderByOrderId(orderId: number) {
+    let url = this.baseUrl + '/' + orderId;
+    return this.httpClient.get<Order>(url);
+  }
 }
 
 interface OrderHistoryList {

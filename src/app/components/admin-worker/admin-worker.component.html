@@ -32,9 +32,8 @@
         <th>#</th>
         <th>Name</th>
         <th>Address</th>
-        <th>Fee</th>
         <th>Rate</th>
-        <th>Chores</th>
+        <th>Working State</th>
         <th>Status</th>
       </tr>
     </thead>
@@ -47,13 +46,38 @@
         <td>{{ i + 1 }}</td>
         <td>{{ worker.name }}</td>
         <td>{{ worker.address }}</td>
-        <td>{{ worker.fee | currency : "VND" }}</td>
         <td>{{ worker.averageRate }}/5</td>
-        <td>
-          <p *ngFor="let c of worker.chores">
-            {{ c.name }}
-          </p>
+        <!--  -->
+        <!--  -->
+        <td *ngIf="worker.workingState == 'free'">
+          <div class="order-status" style="color: #ff00e2">
+            <mat-icon class="order-status-element">
+              check_circle_outline
+            </mat-icon>
+            <span class="order-status-element">
+              {{ worker.workingState }}
+            </span>
+          </div>
         </td>
+        <!--  -->
+        <td *ngIf="worker.workingState == 'working'">
+          <div class="order-status" style="color: #d1a703">
+            <mat-icon class="order-status-element"> gavel </mat-icon>
+            <span class="order-status-element">
+              {{ worker.workingState }}
+            </span>
+          </div>
+        </td>
+        <!--  -->
+        <td *ngIf="worker.workingState == 'off'">
+          <div class="order-status" style="color: #ff0505">
+            <mat-icon class="order-status-element"> alarm </mat-icon>
+            <span class="order-status-element">
+              {{ worker.workingState }}
+            </span>
+          </div>
+        </td>
+        <!--  -->
         <td>
           <mat-slide-toggle
             [checked]="worker.status"

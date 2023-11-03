@@ -1,0 +1,84 @@
+<div class="container" style="margin: 20px">
+  <!-- title -->
+  <h3 class="title">Your Order History</h3>
+
+  <!-- list -->
+  <p *ngIf="orders.length == 0 || orders == null">
+    You don't have any finish/pending order
+  </p>
+  <mat-accordion class="example-headers-align" multi>
+    <mat-expansion-panel
+      *ngFor="let order of orders; index as i"
+      [ngClass]="{
+        'status-finish': order.status == 'finished',
+        'status-pending': order.status == 'pending',
+        'status-working': order.status == 'inprogress',
+        'status-reject': order.status == 'reject'
+      }"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{ i + 1 }}</mat-panel-title>
+        <mat-panel-title>{{ order.dateString }}</mat-panel-title>
+        <mat-panel-title>{{ order.workerName }}</mat-panel-title>
+        <mat-panel-title>
+          {{ order.review?.rate || 0 }}
+          <mat-icon style="scale: 70%">stars</mat-icon>
+        </mat-panel-title>
+        <!--  -->
+        <mat-panel-title *ngIf="order.status == 'finished'">
+          <mat-icon class="order-status-element">
+            check_circle_outline
+          </mat-icon>
+          <span class="order-status-element">
+            {{ order.status }}
+          </span>
+        </mat-panel-title>
+        <!--  -->
+        <mat-panel-title *ngIf="order.status == 'inprogress'">
+          <mat-icon class="order-status-element"> gavel </mat-icon>
+          <span class="order-status-element">
+            {{ order.status }}
+          </span>
+        </mat-panel-title>
+        <!--  -->
+        <mat-panel-title *ngIf="order.status == 'pending'">
+          <mat-icon class="order-status-element"> alarm </mat-icon>
+          <span class="order-status-element">
+            {{ order.status }}
+          </span>
+        </mat-panel-title>
+        <!--  -->
+        <mat-panel-title *ngIf="order.status == 'reject'">
+          <mat-icon class="order-status-element"> error_outline </mat-icon>
+          <span class="order-status-element">
+            {{ order.status }}
+          </span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <span *ngIf="order.review != null && order.status == 'finished'">{{
+        order.review.content
+      }}</span>
+      <p *ngIf="order.review == null && order.status == 'finished'">
+        <span> You haven't review this order. </span>
+        <br />
+        <span
+          (click)="onReviewDialog(order)"
+          style="color: #da0b2f"
+          class="open-review-span"
+        >
+          Click here to write review and rate this worker.</span
+        >
+      </p>
+      <span *ngIf="order.status == 'working'">
+        You can review this order after your request has finished
+      </span>
+      <span *ngIf="order.status == 'pending'">
+        Waiting for worker to submit your order
+      </span>
+      <span *ngIf="order.status == 'reject'">
+        Your order has been rejected, please book another worker.
+      </span>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

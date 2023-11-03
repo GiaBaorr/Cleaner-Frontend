@@ -51,6 +51,44 @@ export class AccountService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     });
   }
+
+  getUserAccountByToken() {
+    let url = this.baseUrl + '/get_account';
+
+    return this.httpClient.get<Account>(url);
+  }
+  updateAccountByUser(data: any) {
+    return this.httpClient.put(this.baseUrl + '/update', data, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    });
+  }
+
+  changePasswordByUser(data: any) {
+    return this.httpClient.post(this.baseUrl + '/change_password', data, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    });
+  }
+
+  getOtpByUser(data: any) {
+    let url = this.baseUrl + '/send_otp';
+    return this.httpClient.post(url, data, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    });
+  }
+
+  changePasswordByUserWithOtp(data: any) {
+    return this.httpClient.post(this.baseUrl + '/forgot_password', data, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    });
+  }
+
+  userEnrollWorker(data: any) {
+    let url = this.baseUrl + '/user/add';
+
+    return this.httpClient.post(url, data, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    });
+  }
 }
 
 interface AccountList {

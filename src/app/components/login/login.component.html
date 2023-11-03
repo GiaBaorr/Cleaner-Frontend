@@ -64,6 +64,124 @@
         </mat-error>
       </mat-form-field>
     </div>
+    <!-- Forgot Password -->
+    <div>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            Forgotten password?
+          </mat-expansion-panel-header>
+          <form [formGroup]="forgotPasswordForm">
+            <div fxFlex fxLayout="column">
+              <!-- Email -->
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-label>Your Email</mat-label>
+                <input matInput formControlName="email" required />
+                <mat-error
+                  *ngIf="
+                    forgotPasswordForm.controls.email.touched &&
+                    forgotPasswordForm.controls.email.invalid
+                  "
+                >
+                  <span
+                    style="font-size: 16px; color: white"
+                    *ngIf="forgotPasswordForm.controls.email.errors.required"
+                    >This field is mandatory</span
+                  >
+                  <span
+                    style="font-size: 16px; color: white"
+                    *ngIf="forgotPasswordForm.controls.email.errors.pattern"
+                    >This field is invalid</span
+                  >
+                </mat-error>
+              </mat-form-field>
+              <!-- OTP -->
+              <div class="otp">
+                <ng-otp-input
+                  (onInputChange)="onOtpChange($event)"
+                  [config]="{ length: 6, allowNumbersOnly: true }"
+                ></ng-otp-input>
+              </div>
+              <!-- Password  -->
+              <mat-form-field appearance="outline" fxFlex>
+                <mat-label>New Password</mat-label>
+                <input
+                  matInput
+                  formControlName="newPassword"
+                  required
+                  [type]="hideNewPassword ? 'password' : 'text'"
+                />
+                <button
+                  type="button"
+                  mat-icon-button
+                  matSuffix
+                  (click)="hideNewPassword = !hideNewPassword"
+                  [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="'hide'"
+                >
+                  <mat-icon>{{
+                    hideNewPassword ? "visibility_off" : "visibility"
+                  }}</mat-icon>
+                </button>
+                <mat-error
+                  *ngIf="
+                    forgotPasswordForm.controls.newPassword.touched &&
+                    forgotPasswordForm.controls.newPassword.invalid
+                  "
+                >
+                  <span
+                    style="font-size: 16px; color: white"
+                    *ngIf="
+                      forgotPasswordForm.controls.newPassword.errors.required
+                    "
+                    >This field is mandatory</span
+                  >
+                  <span
+                    *ngIf="
+                      forgotPasswordForm.controls.newPassword.errors
+                        .minlength ||
+                      forgotPasswordForm.controls.newPassword.errors.maxlength
+                    "
+                    >This field length must be between 6-18</span
+                  >
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </form>
+          <!-- end form -->
+          <mat-action-row>
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="handleSendOTP(forgotPasswordForm.controls.email.value)"
+              type="submit"
+              [disabled]="
+                forgotPasswordForm.controls.email.invalid || !otpButtonEnable
+              "
+            >
+              <mat-icon>mail_outline</mat-icon>
+              <span *ngIf="otpButtonEnable">Send OTP</span>
+              <span *ngIf="!otpButtonEnable"
+                >{{ otpCountdown }} seconds to resend</span
+              >
+            </button>
+            <!-- check otp -->
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="handleResetNewPassword()"
+              type="submit"
+              [disabled]="
+                !resetPasswordOTPCondition || forgotPasswordForm.invalid
+              "
+            >
+              <mat-icon>hotel</mat-icon>Update New Password
+            </button>
+          </mat-action-row>
+          <!-- END action -->
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end" class="pr-24" class="dialog-footer">

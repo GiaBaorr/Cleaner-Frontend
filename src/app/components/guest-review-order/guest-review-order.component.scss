@@ -1,0 +1,23 @@
+.container form {
+  margin: 20px auto;
+  background-color: #524b3d;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 50%;
+}
+
+.form-element {
+  width: 80%;
+}
+
+form button {
+  margin: 0 10px;
+}
+
+.title {
+  font-size: 20px;
+  color: white;
+}

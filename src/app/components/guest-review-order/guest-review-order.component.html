@@ -1,0 +1,61 @@
+<div class="container">
+  <form [formGroup]="reviewOrderForm">
+    <h3 class="title form-elemnt">Share us your experience with CLEAN HOUSE</h3>
+
+    <mat-form-field class="form-element" appearance="outline" fxFlex>
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="guestEmail" required />
+      <mat-error
+        *ngIf="
+          reviewOrderForm.controls.guestEmail.touched &&
+          reviewOrderForm.controls.guestEmail.invalid
+        "
+      >
+        <span
+          style="font-size: 16px; color: white"
+          *ngIf="reviewOrderForm.controls.guestEmail.errors.required"
+          >This field is mandatory</span
+        >
+        <span
+          style="font-size: 16px; color: white"
+          *ngIf="reviewOrderForm.controls.guestEmail.errors.pattern"
+          >This field is invalid</span
+        >
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Rate -->
+    <mat-form-field class="form-element">
+      <mat-label>Service rate</mat-label>
+      <mat-select required formControlName="rate">
+        <mat-option value="1"> 1 <mat-icon>stars</mat-icon> </mat-option>
+        <mat-option value="2"> 2 <mat-icon>stars</mat-icon> </mat-option>
+        <mat-option value="3"> 3 <mat-icon>stars</mat-icon> </mat-option>
+        <mat-option value="4"> 4 <mat-icon>stars</mat-icon> </mat-option>
+        <mat-option value="5"> 5 <mat-icon>stars</mat-icon> </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!-- Review -->
+    <mat-form-field class="form-element">
+      <mat-label>Textarea</mat-label>
+      <textarea matInput rows="10" formControlName="reviewContent"></textarea>
+    </mat-form-field>
+    <!--  -->
+    <!-- Action -->
+    <mat-dialog-actions align="end" class="pr-24" class="dialog-footer">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        (click)="onSubmitReview()"
+        [disabled]="reviewOrderForm.invalid"
+      >
+        <mat-icon>message</mat-icon> Review
+      </button>
+
+      <button mat-raised-button color="warn" (click)="onClear()">
+        <mat-icon>cancel</mat-icon>Clear
+      </button>
+    </mat-dialog-actions>
+  </form>
+</div>

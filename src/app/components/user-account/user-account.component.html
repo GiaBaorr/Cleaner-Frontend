@@ -1,0 +1,244 @@
+<div class="container" style="margin: 20px">
+  <!-- title -->
+  <h3 class="title">Your Account Settings</h3>
+  <!-- Account form -->
+  <mat-card>
+    <mat-card-header>You can change your information here</mat-card-header>
+    <form [formGroup]="updateAccountForm">
+      <div fxFlex fxLayout="column">
+        <!-- Email -->
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" required />
+          <mat-error
+            *ngIf="
+              updateAccountForm.controls.email.touched &&
+              updateAccountForm.controls.email.invalid
+            "
+          >
+            <span
+              class="invalid-span"
+              *ngIf="updateAccountForm.controls.email.errors.pattern"
+              >This field is invalid</span
+            >
+          </mat-error>
+        </mat-form-field>
+        <!-- fullName -->
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Full Name</mat-label>
+          <input matInput formControlName="fullName" required />
+          <mat-error
+            *ngIf="
+              updateAccountForm.controls.fullName.touched &&
+              updateAccountForm.controls.fullName.invalid
+            "
+          >
+            <span
+              class="invalid-span"
+              *ngIf="updateAccountForm.controls.fullName.errors.pattern"
+              >This field is invalid</span
+            >
+            <span
+              class="invalid-span"
+              *ngIf="updateAccountForm.controls.fullName.errors.required"
+              >This field is mandatory</span
+            >
+          </mat-error>
+        </mat-form-field>
+        <!-- Address -->
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="address" required />
+          <mat-error
+            *ngIf="
+              updateAccountForm.controls.address.touched &&
+              updateAccountForm.controls.address.invalid
+            "
+          >
+            <span
+              class="invalid-span"
+              *ngIf="updateAccountForm.controls.address.errors.required"
+              >This field is mandatory</span
+            >
+          </mat-error>
+        </mat-form-field>
+        <!-- Phone -->
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Phone Number</mat-label>
+          <input matInput formControlName="phoneNumber" required />
+          <mat-error
+            *ngIf="
+              updateAccountForm.controls.phoneNumber.touched &&
+              updateAccountForm.controls.phoneNumber.invalid
+            "
+          >
+            <span
+              class="invalid-span"
+              *ngIf="updateAccountForm.controls.phoneNumber.errors.required"
+              >This field is mandatory</span
+            >
+            <span
+              class="invalid-span"
+              *ngIf="updateAccountForm.controls.phoneNumber.errors.pattern"
+              >This field is invalid</span
+            >
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </form>
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="onSubmitUpdateInfo()"
+        type="submit"
+        [disabled]="!updateAccountForm.valid || !updateAccountForm.touched"
+      >
+        <mat-icon>build</mat-icon> Update your new information
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <div class="spacer"></div>
+  <!-- Change password form -->
+  <mat-card class="password">
+    <mat-card-header>You can change your password here</mat-card-header>
+    <form [formGroup]="changePasswordForm">
+      <div fxFlex fxLayout="column">
+        <!-- currentPassword -->
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Current Password</mat-label>
+          <input
+            matInput
+            formControlName="currentPassword"
+            required
+            [type]="hide0 ? 'password' : 'text'"
+          />
+          <button
+            type="button"
+            mat-icon-button
+            matSuffix
+            (click)="hide0 = !hide0"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="'hide'"
+          >
+            <mat-icon>{{ hide0 ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+          <mat-error
+            *ngIf="
+              changePasswordForm.controls.currentPassword.touched &&
+              changePasswordForm.controls.currentPassword.invalid
+            "
+          >
+            <span
+              class="invalid-span"
+              *ngIf="
+                changePasswordForm.controls.currentPassword.errors.required
+              "
+              >This field is mandatory</span
+            >
+          </mat-error>
+        </mat-form-field>
+        <!-- newPassword1 -->
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>New Password</mat-label>
+          <input
+            matInput
+            formControlName="newPassword1"
+            required
+            [type]="hide1 ? 'password' : 'text'"
+          />
+          <button
+            type="button"
+            mat-icon-button
+            matSuffix
+            (click)="hide1 = !hide1"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="'hide'"
+          >
+            <mat-icon>{{ hide1 ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+          <mat-error
+            *ngIf="
+              changePasswordForm.controls.newPassword1.touched &&
+              changePasswordForm.controls.newPassword1.invalid
+            "
+          >
+            <span
+              class="invalid-span"
+              *ngIf="changePasswordForm.controls.newPassword1.errors.required"
+              >This field is mandatory</span
+            >
+            <span
+              class="invalid-span"
+              *ngIf="
+                changePasswordForm.controls.newPassword1.errors.minlength ||
+                changePasswordForm.controls.newPassword1.errors.maxlength
+              "
+              >This field length must be between 6-18</span
+            >
+          </mat-error>
+        </mat-form-field>
+        <!-- newPassword2 -->
+        <mat-form-field appearance="outline" fxFlex>
+          <mat-label>Confirm Password</mat-label>
+          <input
+            matInput
+            formControlName="newPassword2"
+            required
+            [type]="hide2 ? 'password' : 'text'"
+          />
+          <button
+            type="button"
+            mat-icon-button
+            matSuffix
+            (click)="hide2 = !hide2"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="'hide'"
+          >
+            <mat-icon>{{ hide2 ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+          <mat-error
+            *ngIf="
+              changePasswordForm.controls.newPassword2.touched &&
+              changePasswordForm.controls.newPassword2.invalid
+            "
+          >
+            <span
+              class="invalid-span"
+              *ngIf="changePasswordForm.controls.newPassword2.errors.required"
+              >This field is mandatory</span
+            >
+            <span
+              class="invalid-span"
+              *ngIf="
+                changePasswordForm.controls.newPassword2.errors.minlength ||
+                changePasswordForm.controls.newPassword2.errors.maxlength
+              "
+              >This field length must be between 6-18</span
+            >
+            <span
+              class="invalid-span"
+              *ngIf="
+                changePasswordForm.controls.newPassword2.errors
+                  .confirmedValidator
+              "
+            >
+              Passwords are not match.
+            </span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </form>
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="onChangePassword()"
+        type="submit"
+        [disabled]="!changePasswordForm.valid || !changePasswordForm.touched"
+      >
+        <mat-icon>vpn_key</mat-icon> Change your password
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

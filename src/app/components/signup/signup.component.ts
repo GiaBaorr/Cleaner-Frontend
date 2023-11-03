@@ -119,7 +119,7 @@ export class SignupComponent implements OnInit {
       (error: any) => {
         this.ngxService.stop();
 
-        this.toast.error(error.error);
+        this.toast.error(error.error.message);
         this.accountService.isLoggedIn.next(false);
         localStorage.removeItem('token');
       }

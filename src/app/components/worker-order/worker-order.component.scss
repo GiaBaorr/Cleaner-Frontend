@@ -1,0 +1,127 @@
+.title {
+  font-size: 24px;
+  font-weight: 400;
+  color: #f1574a;
+}
+
+.sub-title {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.example-action-buttons {
+  padding-bottom: 20px;
+}
+
+.mat-expansion-panel {
+  color: black;
+}
+.status-finish {
+  background-color: #acdceb;
+}
+.status-pending {
+  background-color: #efb20b;
+}
+.status-working {
+  background-color: #b158bb;
+}
+.status-reject {
+  background-color: #db4141;
+}
+
+.mat-expansion-panel-header-title {
+  color: black;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.example-headers-align .mat-mdc-form-field + .mat-mdc-form-field {
+  margin-left: 8px;
+}
+
+mat-card {
+  background-color: #3a658b;
+  width: 80%;
+  padding: 20px;
+}
+
+mat-card-header {
+  color: white;
+  font-size: 20px;
+  margin-bottom: 10px;
+  padding: 0;
+}
+mat-form-field {
+  width: 45%;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.password mat-form-field {
+  width: 60%;
+}
+
+form {
+  padding: 10px;
+}
+
+.spacer {
+  width: 100%;
+  padding: 10px;
+}
+
+.working-state-select {
+  width: 30%;
+}
+
+.image-upload {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.image-ele {
+  width: 50%;
+  padding: 10px;
+
+  .worker-ava {
+    width: 100%;
+  }
+}
+
+#fileInput {
+  position: absolute;
+  cursor: pointer;
+  z-index: 10;
+  opacity: 0;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+}
+
+.image-upload {
+  height: 100%;
+}
+
+.upload-photo {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
+  border-left: 1px solid white;
+}
+.upload-input {
+  margin: 0;
+  height: 30%;
+}
+.upload-photo-ele {
+  width: 100%;
+}
+
+.worker-ava {
+  min-width: 100%;
+}

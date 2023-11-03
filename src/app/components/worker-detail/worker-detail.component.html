@@ -11,7 +11,20 @@
   <div class="row">
     <div class="col-md-3 column1">
       <div class="picture">
-        <img src="assets/placeholder.jpg" alt="" />
+        <img
+          *ngIf="
+            currentWorker?.photoUrl == null || currentWorker?.photoUrl == ''
+          "
+          src="assets/placeholder.jpg"
+          class="card-img-top"
+        />
+        <img
+          *ngIf="
+            currentWorker?.photoUrl != null && currentWorker?.photoUrl != ''
+          "
+          src="{{ currentWorker?.photoUrl }}"
+          class="card-img-top"
+        />
         <h2 style="color: green">Ready to work</h2>
         <p>Working area:</p>
         <p>{{ currentWorker?.address }}</p>

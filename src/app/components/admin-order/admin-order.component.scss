@@ -58,3 +58,14 @@ mat-card {
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 }
+
+.order-status {
+  display: flex;
+  align-items: center;
+}
+
+.order-status-element {
+  display: inline-block;
+  height: 100%;
+  margin: 0 2px;
+}

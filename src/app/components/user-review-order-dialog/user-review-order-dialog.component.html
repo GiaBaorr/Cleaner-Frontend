@@ -1,0 +1,54 @@
+<mat-toolbar class="dialog-header">
+  <mat-toolbar-row fxLayout="row">
+    <span>Review this order</span>
+    <span class="spacer"></span>
+    <button class="mat-dialog-close" mat-icon-button mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-dialog-content>
+  <form [formGroup]="reviewOrderForm">
+    <!-- worker name -->
+    <mat-form-field appearance="outline">
+      <mat-label>Worker</mat-label>
+      <input matInput value="{{ order?.workerName }}" disabled="true" />
+    </mat-form-field>
+    <!-- date -->
+    <mat-form-field appearance="outline">
+      <mat-label>Date</mat-label>
+      <input matInput value="{{ order?.dateString }}" disabled="true" />
+    </mat-form-field>
+    <!-- Rate -->
+    <mat-form-field>
+      <mat-label>Service rate</mat-label>
+      <mat-select required formControlName="rate">
+        <mat-option value="1"> 1 <mat-icon>stars</mat-icon> </mat-option>
+        <mat-option value="2"> 2 <mat-icon>stars</mat-icon> </mat-option>
+        <mat-option value="3"> 3 <mat-icon>stars</mat-icon> </mat-option>
+        <mat-option value="4"> 4 <mat-icon>stars</mat-icon> </mat-option>
+        <mat-option value="5"> 5 <mat-icon>stars</mat-icon> </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!-- Review -->
+    <mat-form-field>
+      <mat-label>Textarea</mat-label>
+      <textarea matInput rows="5" formControlName="reviewContent"></textarea>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end" class="pr-24" class="dialog-footer">
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    (click)="onSubmitReview()"
+    [disabled]="reviewOrderForm.controls.rate.value == null"
+  >
+    <mat-icon>message</mat-icon> Review
+  </button>
+
+  <button mat-raised-button color="warn" mat-dialog-close>
+    <mat-icon>cancel</mat-icon>Close
+  </button>
+</mat-dialog-actions>

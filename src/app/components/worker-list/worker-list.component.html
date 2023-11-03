@@ -38,7 +38,16 @@
       (click)="seeWorkerDetail(worker.id)"
     >
       <div class="card">
-        <img src="assets/placeholder.jpg" class="card-img-top" />
+        <img
+          *ngIf="worker.photoUrl == null || worker.photoUrl == ''"
+          src="assets/placeholder.jpg"
+          class="card-img-top"
+        />
+        <img
+          *ngIf="worker.photoUrl != null && worker.photoUrl != ''"
+          src="{{ worker.photoUrl }}"
+          class="card-img-top"
+        />
         <div class="card-body">
           <h5 class="card-title" style="font-weight: 500; font-size: 20px">
             {{ worker.name }}

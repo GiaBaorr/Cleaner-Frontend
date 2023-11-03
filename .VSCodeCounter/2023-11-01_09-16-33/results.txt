@@ -1,0 +1,201 @@
+Date : 2023-11-01 09:16:33
+Directory : d:\FPTU\SWP391\Frontend\swp-frontend
+Total : 139 files,  18850 codes, 178 comments, 697 blanks, all 19725 lines
+
+Languages
++--------------------+------------+------------+------------+------------+------------+
+| language           | files      | code       | comment    | blank      | total      |
++--------------------+------------+------------+------------+------------+------------+
+| JSON               |          5 |     13,305 |          2 |          5 |     13,312 |
+| TypeScript         |         80 |      2,781 |         48 |        467 |      3,296 |
+| HTML               |         26 |      1,793 |         99 |         60 |      1,952 |
+| SCSS               |         26 |        937 |         28 |        162 |      1,127 |
+| JSON with Comments |          1 |         32 |          1 |          1 |         34 |
+| Markdown           |          1 |          2 |          0 |          2 |          4 |
++--------------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                        | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                           |        139 |     18,850 |        178 |        697 |     19,725 |
+| . (Files)                                                                                                                   |          7 |     13,339 |          3 |          8 |     13,350 |
+| src                                                                                                                         |        132 |      5,511 |        175 |        689 |      6,375 |
+| src (Files)                                                                                                                 |          3 |         68 |          4 |         11 |         83 |
+| src\app                                                                                                                     |        129 |      5,443 |        171 |        678 |      6,292 |
+| src\app (Files)                                                                                                             |          6 |        227 |          4 |         18 |        249 |
+| src\app\common                                                                                                              |         10 |         80 |          0 |         17 |         97 |
+| src\app\components                                                                                                          |         96 |      4,632 |        165 |        532 |      5,329 |
+| src\app\components\admin                                                                                                    |          4 |         40 |          0 |         10 |         50 |
+| src\app\components\admin-account                                                                                            |          4 |        499 |         22 |         41 |        562 |
+| src\app\components\admin-navbar                                                                                             |          4 |         80 |          0 |         12 |         92 |
+| src\app\components\admin-order                                                                                              |          4 |        219 |         11 |         33 |        263 |
+| src\app\components\admin-worker                                                                                             |          4 |        273 |          8 |         37 |        318 |
+| src\app\components\app-user-navbar                                                                                          |          4 |        101 |          2 |         13 |        116 |
+| src\app\components\footer                                                                                                   |          4 |        111 |          0 |         16 |        127 |
+| src\app\components\guest-review-order                                                                                       |          4 |        135 |         10 |         18 |        163 |
+| src\app\components\header                                                                                                   |          4 |        175 |          6 |         31 |        212 |
+| src\app\components\hiring-worker                                                                                            |          4 |        251 |          3 |         18 |        272 |
+| src\app\components\home                                                                                                     |          4 |         35 |          2 |          9 |         46 |
+| src\app\components\login                                                                                                    |          4 |        380 |          8 |         29 |        417 |
+| src\app\components\not-found-page                                                                                           |          4 |        101 |          1 |         15 |        117 |
+| src\app\components\signup                                                                                                   |          4 |        333 |          7 |         21 |        361 |
+| src\app\components\update-worker-dialog                                                                                     |          4 |        215 |          9 |         21 |        245 |
+| src\app\components\user-account                                                                                             |          4 |        432 |         13 |         24 |        469 |
+| src\app\components\user-detail                                                                                              |          4 |         50 |          0 |         11 |         61 |
+| src\app\components\user-enroll                                                                                              |          4 |        182 |          4 |         19 |        205 |
+| src\app\components\user-orders                                                                                              |          4 |        121 |          2 |         19 |        142 |
+| src\app\components\user-review-order-dialog                                                                                 |          4 |        128 |          5 |         17 |        150 |
+| src\app\components\worker-account                                                                                           |          4 |         26 |          0 |         10 |         36 |
+| src\app\components\worker-detail                                                                                            |          4 |        363 |         43 |         55 |        461 |
+| src\app\components\worker-list                                                                                              |          4 |        302 |          7 |         38 |        347 |
+| src\app\components\worker-order                                                                                             |          4 |         80 |          2 |         15 |         97 |
+| src\app\services                                                                                                            |         16 |        415 |          2 |        108 |        525 |
+| src\app\shared                                                                                                              |          1 |         89 |          0 |          3 |         92 |
++-----------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| filename                                                                                                                    | language           | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| d:\FPTU\SWP391\Frontend\swp-frontend\README.md                                                                              | Markdown           |          2 |          0 |          2 |          4 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\angular.json                                                                           | JSON               |        105 |          0 |          1 |        106 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\package-lock.json                                                                      | JSON               |     13,130 |          0 |          1 |     13,131 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\package.json                                                                           | JSON               |         47 |          0 |          1 |         48 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\app.component.html                                                             | HTML               |          1 |          0 |          1 |          2 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\app.component.scss                                                             | SCSS               |          0 |          0 |          1 |          1 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\app.component.spec.ts                                                          | TypeScript         |         23 |          0 |          5 |         28 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\app.component.ts                                                               | TypeScript         |          9 |          0 |          2 |         11 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\app.module.ts                                                                  | TypeScript         |        183 |          1 |          5 |        189 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\common\account.spec.ts                                                         | TypeScript         |          6 |          0 |          2 |          8 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\common\account.ts                                                              | TypeScript         |          9 |          0 |          1 |         10 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\common\household-chore.spec.ts                                                 | TypeScript         |          6 |          0 |          2 |          8 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\common\household-chore.ts                                                      | TypeScript         |          5 |          0 |          1 |          6 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\common\order.spec.ts                                                           | TypeScript         |          6 |          0 |          2 |          8 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\common\order.ts                                                                | TypeScript         |         14 |          0 |          2 |         16 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\common\review.spec.ts                                                          | TypeScript         |          6 |          0 |          2 |          8 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\common\review.ts                                                               | TypeScript         |          7 |          0 |          1 |          8 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\common\worker.spec.ts                                                          | TypeScript         |          6 |          0 |          2 |          8 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\common\worker.ts                                                               | TypeScript         |         15 |          0 |          2 |         17 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\admin-account\admin-account.component.html                          | HTML               |        230 |         15 |          4 |        249 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\admin-account\admin-account.component.scss                          | SCSS               |         74 |          0 |         18 |         92 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\admin-account\admin-account.component.spec.ts                       | TypeScript         |         17 |          0 |          5 |         22 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\admin-account\admin-account.component.ts                            | TypeScript         |        178 |          7 |         14 |        199 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\admin-navbar\admin-navbar.component.html                            | HTML               |         13 |          0 |          1 |         14 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\admin-navbar\admin-navbar.component.scss                            | SCSS               |         42 |          0 |          3 |         45 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\admin-navbar\admin-navbar.component.spec.ts                         | TypeScript         |         17 |          0 |          5 |         22 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\admin-navbar\admin-navbar.component.ts                              | TypeScript         |          8 |          0 |          3 |         11 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\admin-order\admin-order.component.html                              | HTML               |         60 |          5 |          4 |         69 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\admin-order\admin-order.component.scss                              | SCSS               |         48 |          0 |         13 |         61 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\admin-order\admin-order.component.spec.ts                           | TypeScript         |         17 |          0 |          5 |         22 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\admin-order\admin-order.component.ts                                | TypeScript         |         94 |          6 |         11 |        111 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\admin-worker\admin-worker.component.html                            | HTML               |         77 |          5 |          4 |         86 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\admin-worker\admin-worker.component.scss                            | SCSS               |         48 |          0 |         13 |         61 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\admin-worker\admin-worker.component.spec.ts                         | TypeScript         |         17 |          0 |          5 |         22 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\admin-worker\admin-worker.component.ts                              | TypeScript         |        131 |          3 |         15 |        149 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\admin\admin.component.html                                          | HTML               |         10 |          0 |          1 |         11 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\admin\admin.component.scss                                          | SCSS               |          0 |          0 |          1 |          1 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\admin\admin.component.spec.ts                                       | TypeScript         |         17 |          0 |          5 |         22 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\admin\admin.component.ts                                            | TypeScript         |         13 |          0 |          3 |         16 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\app-user-navbar\app-user-navbar.component.html                      | HTML               |         21 |          2 |          1 |         24 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\app-user-navbar\app-user-navbar.component.scss                      | SCSS               |         42 |          0 |          3 |         45 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\app-user-navbar\app-user-navbar.component.spec.ts                   | TypeScript         |         17 |          0 |          5 |         22 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\app-user-navbar\app-user-navbar.component.ts                        | TypeScript         |         21 |          0 |          4 |         25 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\footer\footer.component.html                                        | HTML               |         60 |          0 |          2 |         62 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\footer\footer.component.scss                                        | SCSS               |         26 |          0 |          6 |         32 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\footer\footer.component.spec.ts                                     | TypeScript         |         17 |          0 |          5 |         22 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\footer\footer.component.ts                                          | TypeScript         |          8 |          0 |          3 |         11 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\guest-review-order\guest-review-order.component.html                | HTML               |         54 |          4 |          4 |         62 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\guest-review-order\guest-review-order.component.scss                | SCSS               |         20 |          0 |          4 |         24 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\guest-review-order\guest-review-order.component.spec.ts             | TypeScript         |         17 |          0 |          5 |         22 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\guest-review-order\guest-review-order.component.ts                  | TypeScript         |         44 |          6 |          5 |         55 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\header\header.component.html                                        | HTML               |         31 |          2 |          3 |         36 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\header\header.component.scss                                        | SCSS               |         53 |          3 |         10 |         66 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\header\header.component.spec.ts                                     | TypeScript         |         17 |          0 |          5 |         22 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\header\header.component.ts                                          | TypeScript         |         74 |          1 |         13 |         88 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\hiring-worker\hiring-worker.component.html                          | HTML               |        123 |          2 |          5 |        130 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\hiring-worker\hiring-worker.component.scss                          | SCSS               |         11 |          0 |          1 |         12 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\hiring-worker\hiring-worker.component.spec.ts                       | TypeScript         |         17 |          0 |          5 |         22 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\hiring-worker\hiring-worker.component.ts                            | TypeScript         |        100 |          1 |          7 |        108 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\home\home.component.html                                            | HTML               |          4 |          1 |          1 |          6 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\home\home.component.scss                                            | SCSS               |          0 |          0 |          1 |          1 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\home\home.component.spec.ts                                         | TypeScript         |         17 |          0 |          5 |         22 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\home\home.component.ts                                              | TypeScript         |         14 |          1 |          2 |         17 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\login\login.component.html                                          | HTML               |        192 |          8 |          2 |        202 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\login\login.component.scss                                          | SCSS               |         18 |          0 |          2 |         20 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\login\login.component.spec.ts                                       | TypeScript         |         17 |          0 |          5 |         22 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\login\login.component.ts                                            | TypeScript         |        153 |          0 |         20 |        173 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\not-found-page\not-found-page.component.html                        | HTML               |          8 |          0 |          3 |         11 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\not-found-page\not-found-page.component.scss                        | SCSS               |         68 |          1 |          4 |         73 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\not-found-page\not-found-page.component.spec.ts                     | TypeScript         |         17 |          0 |          5 |         22 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\not-found-page\not-found-page.component.ts                          | TypeScript         |          8 |          0 |          3 |         11 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\signup\signup.component.html                                        | HTML               |        190 |          6 |          2 |        198 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\signup\signup.component.scss                                        | SCSS               |         11 |          0 |          1 |         12 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\signup\signup.component.spec.ts                                     | TypeScript         |         17 |          0 |          5 |         22 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\signup\signup.component.ts                                          | TypeScript         |        115 |          1 |         13 |        129 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\update-worker-dialog\update-worker-dialog.component.html            | HTML               |         96 |          7 |          3 |        106 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\update-worker-dialog\update-worker-dialog.component.scss            | SCSS               |         11 |          0 |          1 |         12 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\update-worker-dialog\update-worker-dialog.component.spec.ts         | TypeScript         |         17 |          0 |          5 |         22 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\update-worker-dialog\update-worker-dialog.component.ts              | TypeScript         |         91 |          2 |         12 |        105 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\user-account\user-account.component.html                            | HTML               |        234 |         10 |          1 |        245 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\user-account\user-account.component.scss                            | SCSS               |         31 |          0 |          6 |         37 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\user-account\user-account.component.spec.ts                         | TypeScript         |         17 |          0 |          5 |         22 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\user-account\user-account.component.ts                              | TypeScript         |        150 |          3 |         12 |        165 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\user-detail\user-detail.component.html                              | HTML               |         10 |          0 |          1 |         11 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\user-detail\user-detail.component.scss                              | SCSS               |          0 |          0 |          1 |          1 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\user-detail\user-detail.component.spec.ts                           | TypeScript         |         17 |          0 |          5 |         22 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\user-detail\user-detail.component.ts                                | TypeScript         |         23 |          0 |          4 |         27 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\user-enroll\user-enroll.component.html                              | HTML               |         73 |          2 |          1 |         76 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\user-enroll\user-enroll.component.scss                              | SCSS               |         23 |          0 |          5 |         28 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\user-enroll\user-enroll.component.spec.ts                           | TypeScript         |         17 |          0 |          5 |         22 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\user-enroll\user-enroll.component.ts                                | TypeScript         |         69 |          2 |          8 |         79 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\user-orders\user-orders.component.html                              | HTML               |         31 |          2 |          2 |         35 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\user-orders\user-orders.component.scss                              | SCSS               |         30 |          0 |          6 |         36 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\user-orders\user-orders.component.spec.ts                           | TypeScript         |         17 |          0 |          5 |         22 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\user-orders\user-orders.component.ts                                | TypeScript         |         43 |          0 |          6 |         49 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\user-review-order-dialog\user-review-order-dialog.component.html    | HTML               |         49 |          4 |          2 |         55 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\user-review-order-dialog\user-review-order-dialog.component.scss    | SCSS               |         11 |          0 |          1 |         12 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\user-review-order-dialog\user-review-order-dialog.component.spec.ts | TypeScript         |         17 |          0 |          5 |         22 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\user-review-order-dialog\user-review-order-dialog.component.ts      | TypeScript         |         51 |          1 |          9 |         61 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\worker-account\worker-account.component.html                        | HTML               |          1 |          0 |          1 |          2 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\worker-account\worker-account.component.scss                        | SCSS               |          0 |          0 |          1 |          1 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\worker-account\worker-account.component.spec.ts                     | TypeScript         |         17 |          0 |          5 |         22 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\worker-account\worker-account.component.ts                          | TypeScript         |          8 |          0 |          3 |         11 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\worker-detail\worker-detail.component.html                          | HTML               |        103 |         19 |          6 |        128 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\worker-detail\worker-detail.component.scss                          | SCSS               |        186 |         21 |         34 |        241 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\worker-detail\worker-detail.component.spec.ts                       | TypeScript         |         17 |          0 |          5 |         22 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\worker-detail\worker-detail.component.ts                            | TypeScript         |         57 |          3 |         10 |         70 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\worker-list\worker-list.component.html                              | HTML               |         79 |          3 |          2 |         84 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\worker-list\worker-list.component.scss                              | SCSS               |        120 |          0 |         17 |        137 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\worker-list\worker-list.component.spec.ts                           | TypeScript         |         17 |          0 |          5 |         22 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\worker-list\worker-list.component.ts                                | TypeScript         |         86 |          4 |         14 |        104 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\worker-order\worker-order.component.html                            | HTML               |         21 |          2 |          2 |         25 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\worker-order\worker-order.component.scss                            | SCSS               |         22 |          0 |          4 |         26 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\worker-order\worker-order.component.spec.ts                         | TypeScript         |         17 |          0 |          5 |         22 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\components\worker-order\worker-order.component.ts                              | TypeScript         |         20 |          0 |          4 |         24 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\global-constant.ts                                                             | TypeScript         |         11 |          3 |          4 |         18 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\services\account.service.spec.ts                                               | TypeScript         |         12 |          0 |          5 |         17 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\services\account.service.ts                                                    | TypeScript         |         81 |          0 |         20 |        101 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\services\auth.service.spec.ts                                                  | TypeScript         |         12 |          0 |          5 |         17 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\services\auth.service.ts                                                       | TypeScript         |         17 |          0 |          3 |         20 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\services\household-chores.service.spec.ts                                      | TypeScript         |         12 |          0 |          5 |         17 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\services\household-chores.service.ts                                           | TypeScript         |         14 |          0 |          4 |         18 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\services\open-ai.service.spec.ts                                               | TypeScript         |         12 |          0 |          5 |         17 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\services\open-ai.service.ts                                                    | TypeScript         |         34 |          1 |          7 |         42 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\services\order.service.spec.ts                                                 | TypeScript         |         12 |          0 |          5 |         17 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\services\order.service.ts                                                      | TypeScript         |         42 |          1 |          9 |         52 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\services\route-guard.service.spec.ts                                           | TypeScript         |         12 |          0 |          5 |         17 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\services\route-guard.service.ts                                                | TypeScript         |         29 |          0 |          6 |         35 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\services\token-interceptor.service.spec.ts                                     | TypeScript         |         12 |          0 |          5 |         17 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\services\token-interceptor.service.ts                                          | TypeScript         |         41 |          0 |          4 |         45 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\services\worker-service.service.spec.ts                                        | TypeScript         |         12 |          0 |          5 |         17 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\services\worker-service.service.ts                                             | TypeScript         |         61 |          0 |         15 |         76 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\app\shared\material-module.ts                                                      | TypeScript         |         89 |          0 |          3 |         92 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\index.html                                                                         | HTML               |         22 |          0 |          1 |         23 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\main.ts                                                                            | TypeScript         |          4 |          1 |          5 |         10 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\src\styles.scss                                                                        | SCSS               |         42 |          3 |          5 |         50 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\tsconfig.app.json                                                                      | JSON               |         15 |          1 |          1 |         17 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\tsconfig.json                                                                          | JSON with Comments |         32 |          1 |          1 |         34 |
+| d:\FPTU\SWP391\Frontend\swp-frontend\tsconfig.spec.json                                                                     | JSON               |          8 |          1 |          1 |         10 |
+| Total                                                                                                                       |                    |     18,850 |        178 |        697 |     19,725 |
++-----------------------------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+

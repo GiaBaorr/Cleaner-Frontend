@@ -107,4 +107,16 @@ export class AdminOrderComponent implements OnInit {
       });
     }
   }
+
+  onShowReview(content: any) {
+    if (content != null && content.length > 0) {
+      this.toast.info(content, 'Review', {
+        positionClass: 'toast-bottom-center',
+      });
+    } else {
+      this.toast.warning('No review...', 'Review', {
+        positionClass: 'toast-bottom-center',
+      });
+    }
+  }
 }

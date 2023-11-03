@@ -1,0 +1,48 @@
+.title {
+  font-size: 24px;
+  font-weight: 400;
+  color: #f1574a;
+}
+.example-action-buttons {
+  padding-bottom: 20px;
+}
+
+.mat-expansion-panel {
+  background-color: #acdceb;
+  color: black;
+}
+.mat-expansion-panel-header-title {
+  color: black;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.example-headers-align .mat-mdc-form-field + .mat-mdc-form-field {
+  margin-left: 8px;
+}
+
+.example-headers-align span {
+  font-size: 16px;
+}
+
+.open-review-span:hover {
+  text-decoration: underline;
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+.status-finish {
+  background-color: #acdceb;
+}
+.status-pending {
+  background-color: #efb20b;
+}
+.status-working {
+  background-color: #b158bb;
+}
+.status-reject {
+  background-color: #f38989;
+}
