@@ -1,0 +1,46 @@
+<div class="container" style="margin: 20px">
+  <!-- title -->
+  <h3 class="title">Notification</h3>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Worker Name</th>
+        <th>Fee</th>
+        <th>Chores</th>
+        <th>Accept</th>
+        <th>Decline</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr scope="row" *ngFor="let noti of workerNoti; index as i">
+        <td>{{ i + 1 }}</td>
+        <td>{{ noti.workerName }}</td>
+        <td>
+          <span> OLD : {{ noti.oldFee | currency : "VND" }} </span>
+          <br />
+          <span class="new"> NEW : {{ noti.newFee | currency : "VND" }} </span>
+        </td>
+        <td>
+          <span *ngFor="let c of noti.oldChores"> {{ c.name }} | </span>
+          <br />
+          <span class="new" *ngFor="let c of noti.newChores">
+            {{ c.name }} |
+          </span>
+        </td>
+        <td>
+          <p style="color: #0196ff" (click)="onApproveChange(noti.workerId!)">
+            <mat-icon>assignment_turned_in</mat-icon>
+          </p>
+        </td>
+        <td>
+          <p style="color: red" (click)="onDeclineChange(noti.workerId!)">
+            <mat-icon>delete_forever</mat-icon>
+          </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p *ngIf="workerNoti?.length == 0">No request recently</p>
+</div>

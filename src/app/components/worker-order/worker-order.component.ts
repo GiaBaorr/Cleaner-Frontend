@@ -7,6 +7,10 @@ import jwt_decode from 'jwt-decode';
 import { Worker } from 'src/app/common/worker';
 import { Observable } from 'rxjs';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HouseholdChore } from 'src/app/common/household-chore';
+import { HouseholdChoresService } from 'src/app/services/household-chores.service';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-worker-order',
@@ -16,22 +20,42 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 export class WorkerOrderComponent implements OnInit {
   orders: Order[] = [];
   currentWorker?: Worker;
+  workerUpdateForm: any = FormGroup;
+  chores?: HouseholdChore[];
+  choresExistId?: number[] = [];
 
   constructor(
     private orderService: OrderService,
     private workerService: WorkerServiceService,
     private toastrService: ToastrService,
-    private ngxService: NgxUiLoaderService
+    private ngxService: NgxUiLoaderService,
+    private choresService: HouseholdChoresService,
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
+    this.workerUpdateForm = this.formBuilder.group({
+      fee: [null, Validators.required],
+    });
+
     this.listOrders();
     this.fetchWorker();
+    this.fetchChoresList();
+  }
+
+  fetchChoresList() {
+    this.choresService.getAllChores().subscribe((data) => {
+      this.chores = data;
+    });
   }
 
   fetchWorker(): void {
     this.workerService.getWorkerDetailFromWorker().subscribe((data: Worker) => {
       this.currentWorker = data;
+      this.currentWorker.chores?.forEach((c) => {
+        this.choresExistId?.push(c.id!);
+      });
+      this.workerUpdateForm.controls['fee'].setValue(this.currentWorker.fee);
     });
   }
   listOrders() {
@@ -42,6 +66,39 @@ export class WorkerOrderComponent implements OnInit {
       });
     });
   }
+
+  handleChangeChores(event: MatCheckboxChange) {
+    //add
+    if (
+      event.checked &&
+      this.choresExistId?.indexOf(+event.source.value) == -1
+    ) {
+      this.choresExistId?.push(+event.source.value);
+    }
+    //remove
+    if (
+      !event.checked &&
+      this.choresExistId?.indexOf(+event.source.value) != -1
+    ) {
+      this.choresExistId = this.choresExistId?.filter(
+        (item) => item != +event.source.value
+      );
+    }
+  }
+
+  onSubmitUpdateWorker() {
+    let formValue = this.workerUpdateForm.value;
+
+    let data = {
+      ChoresList: this.choresExistId,
+      Fee: formValue.fee,
+    };
+
+    this.workerService.workerUpdateInfo(data).subscribe(() => {
+      this.toastrService.info('Your update request has been sent');
+    });
+  }
+
   //handel action on order
   onRejectOrder(orderId: any) {
     this.workerService.rejectOrderFromWorker(orderId).subscribe(

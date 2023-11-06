@@ -36,17 +36,79 @@
 
   <hr />
   <!-- Update Info -->
-  <h6 class="sub-title">Update Info:</h6>
   <mat-card>
-    <mat-card-header>
-      You can request to admin team to change your chores and fee
-    </mat-card-header>
+    <mat-card-header>Request update your working information</mat-card-header>
+    <form [formGroup]="workerUpdateForm">
+      <!-- Chores -->
+      <mat-checkbox
+        *ngFor="let c of chores"
+        style="width: 50%"
+        matTooltip="{{ c.description }}"
+        [matTooltipPosition]="'above'"
+        (change)="handleChangeChores($event)"
+        [checked]="choresExistId?.indexOf(c.id!) != -1"
+        value="{{ c.id }}"
+      >
+        {{ c.name }}
+      </mat-checkbox>
+      <div class="spacer"></div>
+      <!-- FEE -->
+      <label style="color: white">Your fee suggestion</label>
+      <div class="spacer"></div>
+      <mat-form-field appearance="outline" fxFlex>
+        <mat-label matTooltip="Your wage will be considered by admin team."
+          >Fee per hour</mat-label
+        >
+        <input
+          type="number"
+          step="1000"
+          min="20000"
+          max="150000"
+          matInput
+          formControlName="fee"
+          required
+        />
+        <mat-error
+          *ngIf="
+            workerUpdateForm.controls.fee.touched &&
+            workerUpdateForm.controls.fee.invalid
+          "
+        >
+          <span
+            class="invalid-span"
+            *ngIf="workerUpdateForm.controls.fee.errors.required"
+            >This field is mandatory</span
+          >
+          <span
+            class="invalid-span"
+            *ngIf="workerUpdateForm.controls.fee.errors.min"
+            >Your fee must above 20.000đ</span
+          >
+          <span
+            class="invalid-span"
+            *ngIf="workerUpdateForm.controls.fee.errors.max"
+            >Your fee must below 150.000đ</span
+          >
+        </mat-error>
+      </mat-form-field>
+    </form>
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="onSubmitUpdateWorker()"
+        type="submit"
+        [disabled]="choresExistId?.length == 0 || !workerUpdateForm.valid"
+      >
+        <mat-icon>face</mat-icon> Send Request To Admin Team
+      </button>
+    </mat-card-actions>
   </mat-card>
   <hr />
-
+  <!-- END UPDATE -->
   <!-- Change Image -->
-  <h6 class="sub-title">Change image</h6>
   <mat-card style="width: 100%; height: 500px">
+    <mat-card-header>Upload your photo</mat-card-header>
     <div class="image-upload">
       <div style="width: 40%">
         <img

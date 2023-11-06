@@ -39,6 +39,7 @@ import { NgOtpInputComponent, NgOtpInputModule } from 'ng-otp-input';
 import { UserOrdersComponent } from './components/user-orders/user-orders.component';
 import { UserReviewOrderDialogComponent } from './components/user-review-order-dialog/user-review-order-dialog.component';
 import { GuestReviewOrderComponent } from './components/guest-review-order/guest-review-order.component';
+import { AdminNotificationComponent } from './components/admin-notification/admin-notification.component';
 
 const routes: Routes = [
   {
@@ -62,6 +63,12 @@ const routes: Routes = [
       {
         path: 'account',
         component: AdminAccountComponent,
+        canActivate: [RouteGuardService],
+        data: { expectedRole: ['admin'] },
+      },
+      {
+        path: 'notification',
+        component: AdminNotificationComponent,
         canActivate: [RouteGuardService],
         data: { expectedRole: ['admin'] },
       },
@@ -160,6 +167,7 @@ const ngx_ui_loader_config: NgxUiLoaderConfig = {
     UserOrdersComponent,
     UserReviewOrderDialogComponent,
     GuestReviewOrderComponent,
+    AdminNotificationComponent,
   ],
   imports: [
     NgOtpInputModule,

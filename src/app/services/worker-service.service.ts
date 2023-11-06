@@ -100,6 +100,11 @@ export class WorkerServiceService {
       responseType: 'text',
     });
   }
+
+  workerUpdateInfo(data: any) {
+    let url = this.baseUrl + '/update';
+    return this.httpClient.post(url, data);
+  }
 }
 
 interface WorkerList {
