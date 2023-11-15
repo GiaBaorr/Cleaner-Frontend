@@ -154,9 +154,12 @@ export class LoginComponent implements OnInit {
 
     let data = {
       Email: formData.email,
-      OtpCode: formData.otp,
+      OtpCode: this.forgotPasswordForm.controls['otp'].value,
       NewPassword: formData.newPassword,
     };
+
+    console.log(data);
+
     this.ngxService.start();
     this.accountService.changePasswordByUserWithOtp(data).subscribe(
       () => {

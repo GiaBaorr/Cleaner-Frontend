@@ -70,7 +70,6 @@ export class GuestReviewOrderComponent implements OnInit {
             this.toastService.warning(
               'Your comment contains hate speech. Please check again.'
             );
-            return;
           } else {
             //SAVE COMMENT
             this.orderService.userReviewOrder(formData).subscribe(

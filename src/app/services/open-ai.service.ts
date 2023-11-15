@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class OpenAIService {
   //completion.choices[0].message.content
   private apiUrl = 'https://api.openai.com/v1/chat/completions';
-  private apiKey = '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';
+  private apiKey = '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';
 
   constructor(private http: HttpClient) {}
 
